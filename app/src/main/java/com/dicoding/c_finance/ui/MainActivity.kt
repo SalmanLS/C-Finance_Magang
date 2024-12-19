@@ -1,4 +1,4 @@
-package com.dicoding.c_finance
+package com.dicoding.c_finance.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

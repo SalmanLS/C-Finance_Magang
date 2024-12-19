@@ -1,4 +1,4 @@
-package com.dicoding.c_finance
+package com.dicoding.c_finance.ui
 
 import android.content.Intent
 import android.os.Bundle
