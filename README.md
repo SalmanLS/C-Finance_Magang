@@ -1,0 +1,7 @@
+# C-Finance
+
+Aplikasi Keuangan Berbasis Android, PROJEK AKHIR MAGANG DI CREATIVE GAMA STUDIO.
+NOTE: PLEASE DONT CHANGE ANYTHING.
+
+---
+
