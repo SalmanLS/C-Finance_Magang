@@ -40,11 +40,11 @@
             android:layout_marginTop="96dp"
             android:layout_marginEnd="48dp"
             android:hint="@string/username"
+            app:boxBackgroundColor="@color/grey"
             app:boxCornerRadiusBottomEnd="30dp"
             app:boxCornerRadiusBottomStart="30dp"
             app:boxCornerRadiusTopEnd="30dp"
             app:boxCornerRadiusTopStart="30dp"
-            app:boxBackgroundColor="@color/grey"
             app:boxStrokeColor="@color/grey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,9 +54,9 @@
                 android:id="@+id/tiUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:fontFamily="@font/poppins"
                 android:textColor="@color/black"
-                android:fontFamily="@font/poppins"/>
+                android:textSize="16sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,14 +65,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
-            android:layout_marginEnd="48dp"
             android:layout_marginTop="12dp"
+            android:layout_marginEnd="48dp"
             android:hint="@string/password"
+            app:boxBackgroundColor="@color/grey"
             app:boxCornerRadiusBottomEnd="30dp"
             app:boxCornerRadiusBottomStart="30dp"
             app:boxCornerRadiusTopEnd="30dp"
             app:boxCornerRadiusTopStart="30dp"
-            app:boxBackgroundColor="@color/grey"
             app:boxStrokeColor="@color/grey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -82,9 +82,9 @@
                 android:id="@+id/tiPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:fontFamily="@font/poppins"
                 android:textColor="@color/black"
-                android:fontFamily="@font/poppins"/>
+                android:textSize="16sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,14 +92,14 @@
             android:id="@+id/btnLogin"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:paddingTop="8dp"
             android:layout_marginTop="24dp"
-            android:text="@string/login"
             android:backgroundTint="@color/yellow"
+            android:fontFamily="@font/poppins"
+            android:paddingTop="8dp"
+            android:text="@string/login"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:fontFamily="@font/poppins"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tfPassword" />
