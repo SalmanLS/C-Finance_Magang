@@ -29,7 +29,6 @@
             android:name=".ui.MainActivity"
             android:exported="true"
             android:theme="@style/Base.Theme.CFinance">
-
         </activity>
 
         <meta-data
