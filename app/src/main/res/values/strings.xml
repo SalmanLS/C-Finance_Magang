@@ -4,4 +4,21 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="home">Home</string>
+    <string name="greetings_home">Hi, Admin!</string>
+    <string name="balance_text">Balance</string>
+    <string name="balance">Rp 100,000,000</string>
+    <string name="income_text">Total Income</string>
+    <string name="outcome_text">Total Outcome</string>
+    <string name="balance_income">Rp 100,000,000</string>
+    <string name="balance_outcome">-Rp 100,000,000</string>
+    <string name="add_category">Category</string>
+    <string name="export">Export</string>
+    <string name="activity_log">User Activity Log</string>
+    <string name="name_text">Name</string>
+    <string name="phone_text">Phone Number</string>
+    <string name="username_text">Username</string>
+    <string name="greetings_users">User List</string>
+    <string name="greetings_log">Users Log</string>
+    <string name="greetings_cashflow">Cash Flow</string>
 </resources>
