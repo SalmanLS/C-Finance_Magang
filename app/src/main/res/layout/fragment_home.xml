@@ -65,19 +65,24 @@
             android:layout_height="match_parent"
             android:padding="8dp">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/llContent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal"
+                android:paddingVertical="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp">
+                    android:layout_marginTop="4dp"
+                    android:layout_marginStart="24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
 
                     <ImageView
                         android:id="@+id/imvArrowUp"
@@ -94,7 +99,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:fontFamily="@font/poppins"
-                        android:text="@string/outcome_text"
+                        android:text="@string/income_text"
                         android:textColor="@color/green"
                         android:textSize="14sp"
                         android:textStyle="bold"
@@ -121,14 +126,20 @@
                 <View
                     android:layout_width="1dp"
                     android:layout_height="48dp"
-                    android:layout_marginStart="12dp"
-                    android:background="@color/white" />
+                    android:background="@color/white"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="4dp">
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
 
                     <ImageView
                         android:id="@+id/imvArrowDown"
@@ -169,15 +180,10 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </LinearLayout>
 
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="181dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -206,7 +212,7 @@
         android:layout_marginEnd="24dp"
         android:backgroundTint="@color/blue_lite"
         app:icon="@drawable/export"
-        app:iconSize="24dp"
+        app:iconSize="22dp"
         app:layout_constraintBottom_toBottomOf="@id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cvInfo" />
@@ -218,7 +224,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/blue_lite"
         app:icon="@drawable/add_user"
-        app:iconSize="24dp"
+        app:iconSize="22dp"
         app:layout_constraintBottom_toBottomOf="@id/guideline2"
         app:layout_constraintEnd_toStartOf="@id/btnExport"
         app:layout_constraintTop_toBottomOf="@id/cvInfo" />
