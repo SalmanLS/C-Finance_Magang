@@ -20,6 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -29,13 +30,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline3">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/llUsers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:paddingTop="22dp"
-            android:gravity="center_horizontal"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
@@ -44,12 +43,11 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
                 android:text="@string/name_text"
+                android:layout_marginEnd="28dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_gravity="start"
-                android:layout_marginEnd="32dp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvPhoneText"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -61,10 +59,10 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_gravity="center"
-                android:layout_marginEnd="32dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
             <TextView
                 android:id="@+id/tvUsernameText"
@@ -75,15 +73,16 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_gravity="end"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="14dp"
+                app:layout_constraintStart_toEndOf="@id/tvPhoneText"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
+            android:id="@+id/viewDivider"
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginHorizontal="24dp"
@@ -92,6 +91,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/llUsers"
             android:background="@color/black" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvUsers"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/viewDivider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/user_item"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

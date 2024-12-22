@@ -37,7 +37,7 @@
         android:id="@+id/tv_balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins"
+        android:fontFamily="@font/poppins_semibold"
         android:text="@string/balance"
         android:textColor="@color/white"
         android:textSize="34sp"
@@ -84,9 +84,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/arrow_up"
-                        app:tint="@color/green"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/green" />
 
                     <TextView
                         android:id="@+id/tv_description_income"
@@ -135,9 +135,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/arrow_down"
-                        app:tint="@color/red"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/red" />
 
                     <TextView
                         android:id="@+id/tv_description_outcome"
@@ -187,31 +187,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-       android:backgroundTint="@color/blue_lite"
+        android:backgroundTint="@color/blue_lite"
         android:fontFamily="@font/poppins"
         android:text="@string/add_category"
         android:textStyle="bold"
-        app:icon="@drawable/add_category"
+        app:icon="@drawable/manage_category"
         app:iconSize="28dp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cvInfo"
-        app:layout_constraintBottom_toBottomOf="@id/guideline2"/>
+        app:layout_constraintTop_toBottomOf="@id/cvInfo" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/btnExport"
+        style="?attr/materialIconButtonFilledStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="24dp"
         android:backgroundTint="@color/blue_lite"
-        android:fontFamily="@font/poppins"
-        android:text="@string/export"
-        android:textStyle="bold"
         app:icon="@drawable/export"
-        app:iconSize="28dp"
-        app:layout_constraintStart_toEndOf="@id/btnAddCategory"
-        app:layout_constraintTop_toBottomOf="@id/cvInfo"
-        app:layout_constraintBottom_toBottomOf="@id/guideline2"/>
+        app:iconSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvInfo" />
+
+    <Button
+        android:id="@+id/btnAddUser"
+        style="?attr/materialIconButtonFilledStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue_lite"
+        app:icon="@drawable/add_user"
+        app:iconSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline2"
+        app:layout_constraintEnd_toStartOf="@id/btnExport"
+        app:layout_constraintTop_toBottomOf="@id/cvInfo" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_container"
