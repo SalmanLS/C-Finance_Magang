@@ -11,13 +11,13 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class LoginViewModel(private val financeRepository: FinanceRepository): ViewModel(){
+class LoginViewModel(private val financeRepository: FinanceRepository) : ViewModel() {
     private val _loginResult = MutableStateFlow<Result<LoginResponse>?>(null)
     val loginResult: StateFlow<Result<LoginResponse>?> = _loginResult.asStateFlow()
     private val _isLoading = MutableLiveData(false)
-    val isLoading : LiveData<Boolean> = _isLoading
+    val isLoading: LiveData<Boolean> = _isLoading
 
-    fun login(username: String, password: String){
+    fun login(username: String, password: String) {
         viewModelScope.launch {
             try {
                 _isLoading.value = true

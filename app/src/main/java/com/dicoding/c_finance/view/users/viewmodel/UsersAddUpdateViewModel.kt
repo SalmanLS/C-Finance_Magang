@@ -11,13 +11,13 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class UsersAddUpdateViewModel(private val financeRepository: FinanceRepository): ViewModel() {
+class UsersAddUpdateViewModel(private val financeRepository: FinanceRepository) : ViewModel() {
     private val _addResult = MutableStateFlow<Result<UserResponse>?>(null)
     val addResult: StateFlow<Result<UserResponse>?> = _addResult.asStateFlow()
     private val _updateResult = MutableStateFlow<Result<UserResponse>?>(null)
     val updateResult: StateFlow<Result<UserResponse>?> = _updateResult.asStateFlow()
     private val _isLoading = MutableLiveData(false)
-    val isLoading : LiveData<Boolean> = _isLoading
+    val isLoading: LiveData<Boolean> = _isLoading
 
     fun addUser(username: String, password: String, phone: String, id_role: Int) {
         viewModelScope.launch {

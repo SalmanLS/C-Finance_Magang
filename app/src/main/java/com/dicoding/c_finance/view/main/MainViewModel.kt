@@ -6,7 +6,7 @@ import androidx.lifecycle.liveData
 import com.dicoding.c_finance.model.pref.UserToken
 import com.dicoding.c_finance.model.repo.FinanceRepository
 
-class MainViewModel(private val financeRepository: FinanceRepository): ViewModel() {
+class MainViewModel(private val financeRepository: FinanceRepository) : ViewModel() {
     fun getSession(): LiveData<UserToken?> = liveData {
         val token = financeRepository.getToken()
         emit(token)

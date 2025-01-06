@@ -53,7 +53,12 @@ class FinanceRepository private constructor(
         }
     }
 
-    suspend fun addUser(username: String, password: String, phone: String, id_role: Int): Result<UserResponse>{
+    suspend fun addUser(
+        username: String,
+        password: String,
+        phone: String,
+        id_role: Int
+    ): Result<UserResponse> {
         return try {
             val response = apiService.addUser(username, password, phone, id_role)
             if (response.status == "error") {
@@ -66,7 +71,13 @@ class FinanceRepository private constructor(
         }
     }
 
-    suspend fun updateUser(id: Int, username: String, password: String, phone: String, id_role: Int): Result<UserResponse>{
+    suspend fun updateUser(
+        id: Int,
+        username: String,
+        password: String,
+        phone: String,
+        id_role: Int
+    ): Result<UserResponse> {
         return try {
             val response = apiService.updateUser(id, username, password, phone, id_role)
             if (response.status == "error") {
@@ -79,7 +90,7 @@ class FinanceRepository private constructor(
         }
     }
 
-    suspend fun deleteUser(id: Int): Result<UserResponse>{
+    suspend fun deleteUser(id: Int): Result<UserResponse> {
         return try {
             val response = apiService.deleteUser(id)
             if (response.status == "error") {

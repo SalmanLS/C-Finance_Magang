@@ -31,7 +31,6 @@ class UserDetailDialogFragment : DialogFragment() {
         _binding = FragmentUserDetailDialogBinding.inflate(layoutInflater)
         val user = arguments?.getParcelable<UsersItem>(ARG_USER)
 
-        binding.tvUsername.text = getString(R.string.username_detail, user?.username)
         binding.tvPhone.text = getString(R.string.phone_detail, user?.noHp)
         binding.tvRole.text = getString(R.string.role_detail, getRoleName(user?.idRole))
 

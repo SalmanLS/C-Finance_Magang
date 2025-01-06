@@ -63,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        if (isLoading){
+        if (isLoading) {
             binding.progressIndicator.visibility = View.VISIBLE
             binding.root.alpha = 0.5f
         } else {

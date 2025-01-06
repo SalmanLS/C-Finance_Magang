@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.c_finance.ViewModelFactory
 import com.dicoding.c_finance.databinding.FragmentUsersBinding
 import com.dicoding.c_finance.model.response.user.UsersItem
-import com.dicoding.c_finance.utils.UserActionListener
 import com.dicoding.c_finance.utils.UserAdapter
 import com.dicoding.c_finance.view.users.viewmodel.UsersViewModel
 
@@ -88,15 +87,13 @@ class UsersFragment : Fragment() {
         dialog.show(parentFragmentManager, "UserDetailDialog")
     }
 
-
-
     private fun goToAddUpdateUserActivity() {
         val intent = Intent(requireContext(), UsersAddUpdateActivity::class.java)
         addUsersLauncher.launch(intent)
     }
 
     private fun showLoading(isLoading: Boolean) {
-        if (isLoading){
+        if (isLoading) {
             binding.progressIndicator.visibility = View.VISIBLE
         } else {
             binding.progressIndicator.visibility = View.GONE

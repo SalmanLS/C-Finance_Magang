@@ -13,7 +13,6 @@ import com.dicoding.c_finance.R
 import com.dicoding.c_finance.ViewModelFactory
 import com.dicoding.c_finance.databinding.ActivityUsersAddUpdateBinding
 import com.dicoding.c_finance.model.response.user.UsersItem
-import com.dicoding.c_finance.utils.UserActionListener
 import com.dicoding.c_finance.view.users.viewmodel.UsersAddUpdateViewModel
 import kotlinx.coroutines.launch
 
@@ -25,7 +24,6 @@ class UsersAddUpdateActivity : AppCompatActivity() {
     private var userId: Int? = null
     private var id_role: Int? = null
     private var isEdit = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUsersAddUpdateBinding.inflate(layoutInflater)

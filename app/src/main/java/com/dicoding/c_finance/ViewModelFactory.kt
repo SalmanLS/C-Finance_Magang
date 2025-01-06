@@ -10,22 +10,27 @@ import com.dicoding.c_finance.view.main.MainViewModel
 import com.dicoding.c_finance.view.users.viewmodel.UsersAddUpdateViewModel
 import com.dicoding.c_finance.view.users.viewmodel.UsersViewModel
 
-class ViewModelFactory(private val financeRepository: FinanceRepository): ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory(private val financeRepository: FinanceRepository) :
+    ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(MainViewModel::class.java) -> {
                 MainViewModel(financeRepository) as T
             }
+
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(financeRepository) as T
             }
+
             modelClass.isAssignableFrom(UsersViewModel::class.java) -> {
                 UsersViewModel(financeRepository) as T
             }
+
             modelClass.isAssignableFrom(UsersAddUpdateViewModel::class.java) -> {
                 UsersAddUpdateViewModel(financeRepository) as T
             }
+
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
@@ -33,6 +38,7 @@ class ViewModelFactory(private val financeRepository: FinanceRepository): ViewMo
     companion object {
         @Volatile
         private var INSTANCE: ViewModelFactory? = null
+
         @JvmStatic
         fun getInstance(context: Context): ViewModelFactory {
             if (INSTANCE == null) {

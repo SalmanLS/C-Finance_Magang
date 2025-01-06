@@ -9,11 +9,11 @@ import com.dicoding.c_finance.model.repo.FinanceRepository
 import com.dicoding.c_finance.model.response.user.UsersItem
 import kotlinx.coroutines.launch
 
-class UsersViewModel(private val financeRepository: FinanceRepository): ViewModel() {
+class UsersViewModel(private val financeRepository: FinanceRepository) : ViewModel() {
     private val _userData = MutableLiveData<List<UsersItem>?>()
     val userData: LiveData<List<UsersItem>?> get() = _userData
     private val _isLoading = MutableLiveData(false)
-    val isLoading : LiveData<Boolean> = _isLoading
+    val isLoading: LiveData<Boolean> = _isLoading
 
     fun fetchUsers() {
         viewModelScope.launch {

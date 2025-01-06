@@ -27,10 +27,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         enableEdgeToEdge()
 
-        mainViewModel.getSession().observe(this){token ->
-            if (token?.token.isNullOrEmpty()){
+        mainViewModel.getSession().observe(this) { token ->
+            if (token?.token.isNullOrEmpty()) {
                 navigateToLoginActivity()
-            }else{
+            } else {
                 Log.d("MainActivity", "Token: ${token?.token}")
             }
         }
@@ -42,25 +42,33 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.flFragment, HomeFragment())
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.flFragment, HomeFragment())
                         .commit()
                     true
                 }
+
                 R.id.nav_users -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.flFragment, UsersFragment())
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.flFragment, UsersFragment())
                         .commit()
                     true
                 }
+
                 R.id.nav_list -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.flFragment, CashflowFragment())
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.flFragment, CashflowFragment())
                         .commit()
                     true
                 }
+
                 R.id.nav_log -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.flFragment, LogFragment())
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.flFragment, LogFragment())
                         .commit()
                     true
                 }
+
                 else -> false
             }
         }
