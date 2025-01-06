@@ -73,7 +73,7 @@ class UsersFragment : Fragment() {
         dialog.setOnEditListener { userToEdit ->
             val intent = Intent(requireContext(), UsersAddUpdateActivity::class.java)
             intent.putExtra(USER_ID, userToEdit)
-            startActivity(intent)
+            addUsersLauncher.launch(intent)
         }
         dialog.setOnDeleteListener { userToDelete ->
             AlertDialog.Builder(requireContext())
