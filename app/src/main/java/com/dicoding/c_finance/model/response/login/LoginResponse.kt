@@ -1,4 +1,4 @@
-package com.dicoding.c_finance.model.response
+package com.dicoding.c_finance.model.response.login
 
 import com.google.gson.annotations.SerializedName
 

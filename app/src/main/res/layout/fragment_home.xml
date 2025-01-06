@@ -217,18 +217,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cvInfo" />
 
-    <Button
-        android:id="@+id/btnAddUser"
-        style="?attr/materialIconButtonFilledStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/blue_lite"
-        app:icon="@drawable/add_user"
-        app:iconSize="22dp"
-        app:layout_constraintBottom_toBottomOf="@id/guideline2"
-        app:layout_constraintEnd_toStartOf="@id/btnExport"
-        app:layout_constraintTop_toBottomOf="@id/cvInfo" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_container"
         android:layout_width="match_parent"

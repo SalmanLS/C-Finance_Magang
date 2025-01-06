@@ -18,13 +18,31 @@
     <string name="name_text">Name</string>
     <string name="phone_text">Phone Number</string>
     <string name="username_text">Username</string>
-    <string name="greetings_users">User List</string>
+    <string name="greetings_users">Users</string>
     <string name="greetings_log">Users Log</string>
     <string name="greetings_cashflow">Cash Flow</string>
-    <string name="add_user">User</string>
+    <string name="add_user">Add User</string>
     <string name="add_user_button">Add User Button</string>
     <string name="category">Category</string>
     <string name="date_text">30 April 2024</string>
     <string name="type_text">Tipe</string>
     <string name="log_text">Activity Log</string>
+    <string name="users">Users</string>
+    <string name="cashflow">Cash Flow</string>
+    <string name="log">Log</string>
+    <string name="header">Header</string>
+    <string name="please_select_type">Select Role</string>
+    <string name="admin">Admin</string>
+    <string name="user">User</string>
+    <string name="action">Action</string>
+    <string name="update_user">Update User</string>
+    <string name="create">Create</string>
+    <string name="update">Update</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="role">Role</string>
+    <string name="username_detail">Username: %1$s</string>
+    <string name="phone_detail">Phone: %1$s</string>
+    <string name="role_detail">Role: %1$s</string>
+    <string name="newpassword">New Password</string>
 </resources>

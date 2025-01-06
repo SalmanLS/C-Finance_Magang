@@ -7,14 +7,14 @@
     <item
         android:id="@+id/nav_users"
         android:icon="@drawable/users"
-        android:title="@string/home" />
+        android:title="@string/users" />
     <item
         android:id="@+id/nav_list"
         android:icon="@drawable/cashflow"
-        android:title="@string/home" />
+        android:title="@string/cashflow" />
 
     <item
         android:id="@+id/nav_log"
         android:icon="@drawable/log"
-        android:title="@string/home" />
+        android:title="@string/log" />
 </menu>

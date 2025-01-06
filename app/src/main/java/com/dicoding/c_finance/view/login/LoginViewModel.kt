@@ -4,14 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dicoding.c_finance.model.repo.UserRepository
-import com.dicoding.c_finance.model.response.LoginResponse
+import com.dicoding.c_finance.model.repo.FinanceRepository
+import com.dicoding.c_finance.model.response.login.LoginResponse
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class LoginViewModel(private val userRepository: UserRepository): ViewModel(){
+class LoginViewModel(private val financeRepository: FinanceRepository): ViewModel(){
     private val _loginResult = MutableStateFlow<Result<LoginResponse>?>(null)
     val loginResult: StateFlow<Result<LoginResponse>?> = _loginResult.asStateFlow()
     private val _isLoading = MutableLiveData(false)
@@ -21,7 +21,7 @@ class LoginViewModel(private val userRepository: UserRepository): ViewModel(){
         viewModelScope.launch {
             try {
                 _isLoading.value = true
-                val result = userRepository.login(username, password)
+                val result = financeRepository.login(username, password)
                 _loginResult.value = result
                 _isLoading.value = false
             } catch (e: Exception) {
