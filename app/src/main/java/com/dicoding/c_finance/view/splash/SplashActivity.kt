@@ -1,4 +1,4 @@
-package com.dicoding.c_finance.ui
+package com.dicoding.c_finance.view.splash
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.c_finance.databinding.ActivitySplashScreenBinding
+import com.dicoding.c_finance.view.main.MainActivity
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashScreenBinding
