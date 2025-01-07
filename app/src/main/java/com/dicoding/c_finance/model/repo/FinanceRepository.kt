@@ -171,6 +171,58 @@ class FinanceRepository private constructor(
         }
     }
 
+    suspend fun getCategory(): Result<List<CategoryItem>>{
+        return try {
+            val response = apiService.getCategory()
+            if (response.status == "error") {
+                Result.failure(Exception("Failed to get category data"))
+            } else {
+                Result.success(response.category)
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun addCategory(id_tipe: Int, nama_kategori: String): Result<GlobalResponse>{
+        return try{
+            val response = apiService.addCategory(id_tipe, nama_kategori)
+            if(response.status == "error"){
+                Result.failure(Exception("Failed to add category"))
+            }else{
+                Result.success(response)
+            }
+        }catch (e: Exception){
+            Result.failure(e)
+        }
+    }
+
+    suspend fun updateCategory(id_kategori: Int, id_tipe: Int, nama_kategori: String): Result<GlobalResponse>{
+        return try{
+            val response = apiService.updateCategory(id_kategori, id_tipe, nama_kategori)
+            if(response.status == "error"){
+                Result.failure(Exception("Failed to update category"))
+            }else{
+                Result.success(response)
+            }
+        }catch (e: Exception){
+            Result.failure(e)
+        }
+    }
+
+    suspend fun deleteCategory(id_kategori: Int): Result<GlobalResponse>{
+        return try{
+            val response = apiService.deleteCategory(id_kategori)
+            if(response.status == "error"){
+                Result.failure(Exception("Failed to delete category"))
+            }else{
+                Result.success(response)
+            }
+        }catch (e: Exception){
+            Result.failure(e)
+        }
+    }
+
     companion object {
         @Volatile
         private var instance: FinanceRepository? = null

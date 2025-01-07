@@ -12,7 +12,7 @@
     <string name="outcome_text">Total Outcome</string>
     <string name="balance_income">Rp 100,000,000</string>
     <string name="balance_outcome">-Rp 100,000,000</string>
-    <string name="add_category">Category</string>
+    <string name="add_category">Add Category</string>
     <string name="export">Export</string>
     <string name="activity_log">User Activity Log</string>
     <string name="name_text">Name</string>
@@ -56,4 +56,10 @@
     <string name="description_hint">Enter Description</string>
     <string name="update_data">Update Data</string>
     <string name="add_data">Add Data</string>
+    <string name="greetings_category">Category</string>
+    <string name="nameCategory_text">Kategori</string>
+    <string name="add">Add</string>
+    <string name="nameCategory_hint">Enter Name</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit_category">Edit Category</string>
 </resources>

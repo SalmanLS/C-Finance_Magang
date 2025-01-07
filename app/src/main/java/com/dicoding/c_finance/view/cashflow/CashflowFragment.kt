@@ -16,6 +16,7 @@ import com.dicoding.c_finance.databinding.FragmentCashflowBinding
 import com.dicoding.c_finance.model.response.cashflow.TransaksiItem
 import com.dicoding.c_finance.utils.CashflowAdapter
 import com.dicoding.c_finance.view.cashflow.viewmodel.CashflowViewModel
+import com.dicoding.c_finance.view.category.CategoryActivity
 
 class CashflowFragment : Fragment() {
     private lateinit var binding: FragmentCashflowBinding
@@ -55,6 +56,10 @@ class CashflowFragment : Fragment() {
             goToCashflowAddUpdate()
         }
 
+        binding.btnAddCategory.setOnClickListener {
+            goToCategory()
+        }
+
         if (cashflowViewModel.cashflowData.value == null) {
             cashflowViewModel.fetchCashflow()
         }
@@ -66,6 +71,11 @@ class CashflowFragment : Fragment() {
         cashflowViewModel.isLoading.observe(viewLifecycleOwner) {
             showLoading(it)
         }
+    }
+
+    private fun goToCategory() {
+        val intent = Intent(requireContext(), CategoryActivity::class.java)
+        startActivity(intent)
     }
 
     private fun showCashflowDetails(cashflow: TransaksiItem) {

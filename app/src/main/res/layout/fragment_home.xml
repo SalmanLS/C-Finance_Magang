@@ -188,34 +188,7 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnAddCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:backgroundTint="@color/blue_lite"
-        android:fontFamily="@font/poppins"
-        android:text="@string/add_category"
-        android:textStyle="bold"
-        app:icon="@drawable/manage_category"
-        app:iconSize="28dp"
-        app:layout_constraintBottom_toBottomOf="@id/guideline2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cvInfo" />
 
-    <Button
-        android:id="@+id/btnExport"
-        style="?attr/materialIconButtonFilledStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="24dp"
-        android:backgroundTint="@color/blue_lite"
-        app:icon="@drawable/export"
-        app:iconSize="22dp"
-        app:layout_constraintBottom_toBottomOf="@id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cvInfo" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_container"

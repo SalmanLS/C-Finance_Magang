@@ -7,6 +7,7 @@ import com.dicoding.c_finance.model.repo.FinanceRepository
 import com.dicoding.c_finance.utils.Injection
 import com.dicoding.c_finance.view.cashflow.viewmodel.CashflowAddUpdateViewModel
 import com.dicoding.c_finance.view.cashflow.viewmodel.CashflowViewModel
+import com.dicoding.c_finance.view.category.viewmodel.CategoryViewModel
 import com.dicoding.c_finance.view.login.LoginViewModel
 import com.dicoding.c_finance.view.main.MainViewModel
 import com.dicoding.c_finance.view.users.viewmodel.UsersAddUpdateViewModel
@@ -39,6 +40,10 @@ class ViewModelFactory(private val financeRepository: FinanceRepository) :
 
             modelClass.isAssignableFrom(CashflowAddUpdateViewModel::class.java) -> {
                 CashflowAddUpdateViewModel(financeRepository) as T
+            }
+
+            modelClass.isAssignableFrom(CategoryViewModel::class.java) -> {
+                CategoryViewModel(financeRepository) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

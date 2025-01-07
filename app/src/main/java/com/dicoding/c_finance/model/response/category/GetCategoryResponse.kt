@@ -1,6 +1,8 @@
 package com.dicoding.c_finance.model.response.category
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class GetCategoryResponse(
 
@@ -11,7 +13,7 @@ data class GetCategoryResponse(
 	val status: String? = null
 )
 
-
+@Parcelize
 data class CategoryItem(
 
 	@field:SerializedName("id_kategori")
@@ -22,4 +24,4 @@ data class CategoryItem(
 
 	@field:SerializedName("nama_kategori")
 	val namaKategori: String? = null
-)
+) : Parcelable

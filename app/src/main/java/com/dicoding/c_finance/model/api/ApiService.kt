@@ -14,6 +14,7 @@ import retrofit2.http.PUT
 import retrofit2.http.Query
 
 interface ApiService {
+    //LOGIN
     @FormUrlEncoded
     @POST("login")
     suspend fun login(
@@ -21,10 +22,11 @@ interface ApiService {
         @Field("password") password: String
     ): LoginResponse
 
+    //USER
     @FormUrlEncoded
     @POST("user/add")
     suspend fun addUser(
-        @Field("nama") nama : String,
+        @Field("nama") nama: String,
         @Field("username") username: String,
         @Field("password") password: String,
         @Field("no_hp") no_hp: String,
@@ -35,7 +37,7 @@ interface ApiService {
     @PUT("user/update")
     suspend fun updateUser(
         @Field("id_user") id: Int,
-        @Field("nama") nama : String,
+        @Field("nama") nama: String,
         @Field("username") username: String,
         @Field("password") password: String,
         @Field("no_hp") no_hp: String,
@@ -50,11 +52,37 @@ interface ApiService {
         @Query("id_user") id_user: Int
     ): GlobalResponse
 
+    //CATEGORY
     @GET("category/read")
     suspend fun getCategorybyType(
         @Query("id_tipe") id_tipe: Int
     ): GetCategoryResponse
 
+    @GET("category/read")
+    suspend fun getCategory(): GetCategoryResponse
+
+    @FormUrlEncoded
+    @POST("category/add")
+    suspend fun addCategory(
+        @Field("id_tipe") id_tipe: Int,
+        @Field("nama_kategori") nama_kategori: String
+    ): GlobalResponse
+
+    @FormUrlEncoded
+    @PUT("category/update")
+    suspend fun updateCategory(
+        @Field("id_kategori") id_kategori: Int,
+        @Field("id_tipe") id_tipe: Int,
+        @Field("nama_kategori") nama_kategori: String
+    ): GlobalResponse
+
+    @DELETE("category/delete")
+    suspend fun deleteCategory(
+        @Query("id_kategori") id_kategori: Int
+    ): GlobalResponse
+
+
+    //TRANSACTION
     @FormUrlEncoded
     @POST("transaction/add")
     suspend fun addTransaction(
