@@ -45,4 +45,6 @@
     <string name="phone_detail">Phone: %1$s</string>
     <string name="role_detail">Role: %1$s</string>
     <string name="newpassword">New Password</string>
+    <string name="add_cashflow">Data</string>
+    <string name="name">Name</string>
 </resources>

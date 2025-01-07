@@ -23,6 +23,7 @@ interface ApiService {
     @FormUrlEncoded
     @POST("user/add")
     suspend fun addUser(
+        @Field("nama") nama : String,
         @Field("username") username: String,
         @Field("password") password: String,
         @Field("no_hp") no_hp: String,
@@ -33,6 +34,7 @@ interface ApiService {
     @PUT("user/update")
     suspend fun updateUser(
         @Field("id_user") id: Int,
+        @Field("nama") nama : String,
         @Field("username") username: String,
         @Field("password") password: String,
         @Field("no_hp") no_hp: String,

@@ -7,38 +7,72 @@
     android:background="@color/blue"
     tools:context=".view.users.UsersFragment">
 
+    <ImageView
+        android:id="@+id/ivHeader"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="24dp"
+        android:src="@drawable/cashflow"
+        app:layout_constraintBottom_toBottomOf="@id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tvTitlePage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/poppins"
         android:text="@string/greetings_cashflow"
         android:textColor="@color/white"
-        android:textSize="22sp"
+        android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@id/ivHeader"
+        app:layout_constraintStart_toEndOf="@id/ivHeader"
+        app:layout_constraintTop_toTopOf="@id/ivHeader" />
 
-    <ImageButton
-        android:id="@+id/btnAddUser"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddCashflow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/add_user_button"
-        android:src="@drawable/add_category"
-        android:background="@color/blue"
-        android:layout_margin="38dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="24dp"
+        android:backgroundTint="@color/blue_lite"
+        android:fontFamily="@font/poppins"
+        android:text="@string/add_cashflow"
+        android:textStyle="bold"
+        app:icon="@drawable/add_data"
+        app:iconSize="24dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivHeader"
+        app:layout_constraintBottom_toBottomOf="@id/guideline3"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnExport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:backgroundTint="@color/blue_lite"
+        android:fontFamily="@font/poppins"
+        android:text="@string/export"
+        android:textStyle="bold"
+        app:icon="@drawable/export"
+        app:iconSize="24dp"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/btnAddCashflow"
+        app:layout_constraintTop_toBottomOf="@id/ivHeader"
+        app:layout_constraintBottom_toBottomOf="@id/guideline3"/>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline3"
+        android:background="@drawable/background_body"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@drawable/background_body">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline3">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -48,5 +82,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="76dp" />
+        app:layout_constraintGuide_begin="210dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

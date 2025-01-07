@@ -24,7 +24,7 @@ class UserAdapter(private val onUserClicked: (UsersItem) -> Unit) :
     inner class MyViewHolder(private val binding: UserItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(user: UsersItem) {
-            binding.tvUsername.text = user.username
+            binding.tvName.text = user.nama
             binding.tvPhone.text = user.noHp
             binding.root.setOnClickListener {
                 onUserClicked(user)

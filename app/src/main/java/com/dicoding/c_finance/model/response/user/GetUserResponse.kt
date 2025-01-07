@@ -15,6 +15,8 @@ data class GetUserResponse(
 
 @Parcelize
 data class UsersItem(
+    @field:SerializedName("nama")
+    val nama: String? = null,
 
     @field:SerializedName("password")
     val password: String? = null,
@@ -30,4 +32,5 @@ data class UsersItem(
 
     @field:SerializedName("username")
     val username: String? = null
+
 ) : Parcelable

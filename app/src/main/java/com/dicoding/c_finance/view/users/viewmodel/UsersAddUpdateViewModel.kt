@@ -19,11 +19,11 @@ class UsersAddUpdateViewModel(private val financeRepository: FinanceRepository) 
     private val _isLoading = MutableLiveData(false)
     val isLoading: LiveData<Boolean> = _isLoading
 
-    fun addUser(username: String, password: String, phone: String, id_role: Int) {
+    fun addUser(nama: String, username: String, password: String, phone: String, id_role: Int) {
         viewModelScope.launch {
             try {
                 _isLoading.value = true
-                val result = financeRepository.addUser(username, password, phone, id_role)
+                val result = financeRepository.addUser(nama, username, password, phone, id_role)
                 _addResult.value = result
             } catch (e: Exception) {
                 _addResult.value = Result.failure(e)
@@ -33,11 +33,11 @@ class UsersAddUpdateViewModel(private val financeRepository: FinanceRepository) 
         }
     }
 
-    fun updateUser(id: Int, username: String, password: String, phone: String, id_role: Int) {
+    fun updateUser(id: Int, nama: String, username: String, password: String, phone: String, id_role: Int) {
         viewModelScope.launch {
             try {
                 _isLoading.value = true
-                val result = financeRepository.updateUser(id, username, password, phone, id_role)
+                val result = financeRepository.updateUser(id, nama, username, password, phone, id_role)
                 _updateResult.value = result
             } catch (e: Exception) {
                 _updateResult.value = Result.failure(e)

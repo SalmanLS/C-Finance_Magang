@@ -54,13 +54,14 @@ class FinanceRepository private constructor(
     }
 
     suspend fun addUser(
+        nama: String,
         username: String,
         password: String,
         phone: String,
         id_role: Int
     ): Result<UserResponse> {
         return try {
-            val response = apiService.addUser(username, password, phone, id_role)
+            val response = apiService.addUser(nama, username, password, phone, id_role)
             if (response.status == "error") {
                 Result.failure(Exception("Failed to add user"))
             } else {
@@ -73,13 +74,14 @@ class FinanceRepository private constructor(
 
     suspend fun updateUser(
         id: Int,
+        nama: String,
         username: String,
         password: String,
         phone: String,
         id_role: Int
     ): Result<UserResponse> {
         return try {
-            val response = apiService.updateUser(id, username, password, phone, id_role)
+            val response = apiService.updateUser(id, nama, username, password, phone, id_role)
             if (response.status == "error") {
                 Result.failure(Exception("Failed to update user"))
             } else {
