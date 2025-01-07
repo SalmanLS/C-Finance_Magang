@@ -11,7 +11,6 @@ import com.dicoding.c_finance.model.response.user.UsersItem
 class UserDetailDialogFragment : DialogFragment() {
     private var _binding: FragmentUserDetailDialogBinding? = null
     private val binding get() = _binding!!
-
     private var onEditListener: ((UsersItem) -> Unit)? = null
     private var onDeleteListener: ((UsersItem) -> Unit)? = null
 

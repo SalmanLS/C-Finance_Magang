@@ -39,14 +39,14 @@
         android:layout_marginStart="24dp"
         android:backgroundTint="@color/blue_lite"
         android:fontFamily="@font/poppins"
+        android:gravity="center"
         android:text="@string/add_cashflow"
         android:textStyle="bold"
         app:icon="@drawable/add_data"
         app:iconSize="24dp"
-        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivHeader"
-        app:layout_constraintBottom_toBottomOf="@id/guideline3"/>
+        app:layout_constraintTop_toBottomOf="@id/ivHeader" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnExport"
@@ -55,15 +55,14 @@
         android:layout_marginStart="4dp"
         android:backgroundTint="@color/blue_lite"
         android:fontFamily="@font/poppins"
+        android:gravity="center"
         android:text="@string/export"
         android:textStyle="bold"
         app:icon="@drawable/export"
         app:iconSize="24dp"
-        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@id/guideline3"
         app:layout_constraintStart_toEndOf="@id/btnAddCashflow"
-        app:layout_constraintTop_toBottomOf="@id/ivHeader"
-        app:layout_constraintBottom_toBottomOf="@id/guideline3"/>
-
+        app:layout_constraintTop_toBottomOf="@id/ivHeader" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -74,6 +73,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline3">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCashflow"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/cashflow_item" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -83,4 +93,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="210dp" />
+
+    <ProgressBar
+        android:id="@+id/progressIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/guideline3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:indicatorColor="@color/black"
+        app:trackColor="@color/white"
+        android:indeterminate="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>

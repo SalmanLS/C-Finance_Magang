@@ -47,4 +47,13 @@
     <string name="newpassword">New Password</string>
     <string name="add_cashflow">Data</string>
     <string name="name">Name</string>
+    <string name="income">Income</string>
+    <string name="Expense">Expense</string>
+    <string name="please_select_type2">Please Select Type</string>
+    <string name="please_select_category">Select Category</string>
+    <string name="nominal_hint">Enter Nominal</string>
+    <string name="date">Date</string>
+    <string name="description_hint">Enter Description</string>
+    <string name="update_data">Update Data</string>
+    <string name="add_data">Add Data</string>
 </resources>

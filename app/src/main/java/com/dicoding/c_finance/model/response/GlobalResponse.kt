@@ -1,8 +1,8 @@
-package com.dicoding.c_finance.model.response.user
+package com.dicoding.c_finance.model.response
 
 import com.google.gson.annotations.SerializedName
 
-data class UserResponse(
+data class GlobalResponse(
 
     @field:SerializedName("message")
     val message: String? = null,

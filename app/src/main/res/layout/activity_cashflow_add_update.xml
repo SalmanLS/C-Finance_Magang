@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue"
+    tools:context=".view.cashflow.CashflowAddUpdateActivity">
+
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/poppins"
+        android:text="@string/header"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clLogin"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/background_body"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="50dp"
+            android:paddingVertical="12dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/please_select_type2"
+                android:textSize="16sp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioIncome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/income" />
+
+                <RadioButton
+                    android:id="@+id/radioExpense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/Expense" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="28dp"
+            android:background="@drawable/background_add_cashflow"
+            android:padding="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfCategory"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginVertical="4dp"
+                app:boxCornerRadiusBottomEnd="24dp"
+                app:boxCornerRadiusBottomStart="24dp"
+                app:boxCornerRadiusTopEnd="24dp"
+                app:boxCornerRadiusTopStart="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/please_select_category"
+                    android:inputType="none"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfNominal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginVertical="4dp"
+                android:hint="@string/nominal_hint"
+                app:boxCornerRadiusBottomEnd="24dp"
+                app:boxCornerRadiusBottomStart="24dp"
+                app:boxCornerRadiusTopEnd="24dp"
+                app:boxCornerRadiusTopStart="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tfCategory">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiNominal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:inputType="number"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:layout_marginStart="18dp"
+                app:boxCornerRadiusBottomEnd="24dp"
+                app:boxCornerRadiusBottomStart="24dp"
+                app:boxCornerRadiusTopEnd="24dp"
+                app:boxCornerRadiusTopStart="24dp"
+                app:layout_constraintEnd_toStartOf="@id/btn_date"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tfNominal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/date"
+                    android:inputType="date"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/btn_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="12dp"
+                android:layout_marginEnd="24dp"
+                android:src="@drawable/baseline_date_range_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tfNominal" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginVertical="4dp"
+                android:hint="@string/description_hint"
+                app:boxCornerRadiusBottomEnd="24dp"
+                app:boxCornerRadiusBottomStart="24dp"
+                app:boxCornerRadiusTopEnd="24dp"
+                app:boxCornerRadiusTopStart="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tfDate">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="top|start"
+                    android:imeOptions="actionDone"
+                    android:inputType="textMultiLine"
+                    android:lines="5"
+                    android:maxLines="10"
+                    android:overScrollMode="always"
+                    android:padding="12dp"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:verticalScrollbarPosition="right" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <Button
+            android:id="@+id/btnAction"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/yellow"
+            android:fontFamily="@font/poppins"
+            android:layout_marginTop="8dp"
+            android:paddingTop="8dp"
+            android:text="@string/action"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clForm" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="130dp" />
+
+    <ProgressBar
+        android:id="@+id/progressIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:indicatorColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:trackColor="@color/white" />
+</androidx.constraintlayout.widget.ConstraintLayout>
