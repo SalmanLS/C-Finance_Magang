@@ -3,8 +3,10 @@ package com.dicoding.c_finance.model.api
 import com.dicoding.c_finance.model.response.cashflow.GetCashflowResponse
 import com.dicoding.c_finance.model.response.category.GetCategoryResponse
 import com.dicoding.c_finance.model.response.GlobalResponse
+import com.dicoding.c_finance.model.response.log.GetLogResponse
 import com.dicoding.c_finance.model.response.user.GetUserResponse
 import com.dicoding.c_finance.model.response.login.LoginResponse
+import com.dicoding.c_finance.model.response.recyclebin.GetRecyclebinResponse
 import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -110,5 +112,27 @@ interface ApiService {
     @DELETE("transaction/delete")
     suspend fun deleteTransaction(
         @Query("id_transaksi") id_transaksi: Int
+    ): GlobalResponse
+
+    //LOG
+    @GET("actlog/read")
+    suspend fun getLogs(
+        @Query("page") page: Int,
+        @Query("size") size: Int
+    ): GetLogResponse
+
+    @DELETE("actlog/delete")
+    suspend fun deleteLog(
+        @Query("id") id: Int
+    ): GlobalResponse
+
+    //RECYCLE_BIN
+
+    @GET("recyclebin/read")
+    suspend fun getRecycleBin(): GetRecyclebinResponse
+
+    @DELETE("recyclebin/delete")
+    suspend fun deleteRecycleBin(
+        @Query("id_recycle_bin") id_recycle_bin: Int
     ): GlobalResponse
 }

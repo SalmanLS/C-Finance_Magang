@@ -1,6 +1,11 @@
 package com.dicoding.c_finance.model.repo
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.dicoding.c_finance.model.api.ApiConfig
 import com.dicoding.c_finance.model.api.ApiService
 import com.dicoding.c_finance.model.pref.UserPreference
@@ -9,7 +14,10 @@ import com.dicoding.c_finance.model.response.cashflow.TransaksiItem
 import com.dicoding.c_finance.model.response.category.CategoryItem
 import com.dicoding.c_finance.model.response.login.LoginResponse
 import com.dicoding.c_finance.model.response.GlobalResponse
+import com.dicoding.c_finance.model.response.log.LogItem
+import com.dicoding.c_finance.model.response.recyclebin.RecycleBinItem
 import com.dicoding.c_finance.model.response.user.UsersItem
+import com.dicoding.c_finance.utils.LogPagingSource
 import kotlinx.coroutines.flow.firstOrNull
 
 class FinanceRepository private constructor(
@@ -215,6 +223,56 @@ class FinanceRepository private constructor(
             val response = apiService.deleteCategory(id_kategori)
             if(response.status == "error"){
                 Result.failure(Exception("Failed to delete category"))
+            }else{
+                Result.success(response)
+            }
+        }catch (e: Exception){
+            Result.failure(e)
+        }
+    }
+
+    fun getLogs(): LiveData<PagingData<LogItem>>{
+        return Pager(
+            config = PagingConfig(
+                pageSize = 5
+            ),
+            pagingSourceFactory = {
+                LogPagingSource(apiService)
+            }
+        ).liveData
+    }
+
+    suspend fun deleteLogs(id: Int): Result<GlobalResponse>{
+        return try{
+            val response = apiService.deleteLog(id)
+            if(response.status == "error"){
+                Result.failure(Exception("Failed to delete log"))
+            }else{
+                Result.success(response)
+            }
+        }catch (e: Exception){
+            Result.failure(e)
+        }
+    }
+
+    suspend fun getRecycleBin(): Result<List<RecycleBinItem>>{
+        return try {
+            val response = apiService.getRecycleBin()
+            if (response.status == "error") {
+                Result.failure(Exception("Failed to get recycle bin data"))
+            } else {
+                Result.success(response.recycleBin)
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun deleteRecycleBin(id: Int): Result<GlobalResponse>{
+        return try{
+            val response = apiService.deleteRecycleBin(id)
+            if(response.status == "error"){
+                Result.failure(Exception("Failed to delete recycle bin"))
             }else{
                 Result.success(response)
             }

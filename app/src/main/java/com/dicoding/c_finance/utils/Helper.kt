@@ -23,6 +23,19 @@ fun customCurrencyFormat(amount: Double, currencySymbol: String = "Rp"): String 
     return "$currencySymbol ${formatter.format(amount)}"
 }
 
+fun formatTimestamp(inputTimestamp: String, inputFormat: String, outputFormat: String): String {
+    return try {
+        val inputDateFormat = SimpleDateFormat(inputFormat, Locale.getDefault())
+        val outputDateFormat = SimpleDateFormat(outputFormat, Locale.getDefault())
+
+        val date = inputDateFormat.parse(inputTimestamp)
+        outputDateFormat.format(date!!)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        "Invalid date"
+    }
+}
+
 
 
 

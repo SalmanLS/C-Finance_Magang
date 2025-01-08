@@ -16,16 +16,12 @@ class CategoryViewModel(private val financeRepository: FinanceRepository) : View
 
     private val _selectedType = MutableLiveData<Int>()
     val selectedType: LiveData<Int> get() = _selectedType
-
     private val _categoryResult = MutableStateFlow<Result<GlobalResponse>?>(null)
     val categoryResult: StateFlow<Result<GlobalResponse>?> = _categoryResult.asStateFlow()
-
     private val _categoryData = MutableLiveData<List<CategoryItem>?>()
     val categoryData: LiveData<List<CategoryItem>?> get() = _categoryData
-
     private val _isLoading = MutableLiveData(false)
     val isLoading: LiveData<Boolean> = _isLoading
-
     private val _isLoading2 = MutableLiveData(false)
     val isLoading2: LiveData<Boolean> = _isLoading2
 

@@ -62,4 +62,10 @@
     <string name="nameCategory_hint">Enter Name</string>
     <string name="cancel">Cancel</string>
     <string name="edit_category">Edit Category</string>
+    <string name="action_type">Action Type</string>
+    <string name="activity_log_text">Activity Log</string>
+    <string name="retry">Retry</string>
+    <string name="description">Deskripsi</string>
+    <string name="delete_log">Delete Log</string>
+    <string name="recycle_bin">Recycle Bin</string>
 </resources>

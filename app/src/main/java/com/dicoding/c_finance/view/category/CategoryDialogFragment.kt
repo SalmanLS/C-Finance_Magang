@@ -4,18 +4,15 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.lifecycleScope
 import com.dicoding.c_finance.R
 import com.dicoding.c_finance.databinding.FragmentCategoryDialogBinding
 import com.dicoding.c_finance.model.response.category.CategoryItem
-import kotlinx.coroutines.launch
 
 class CategoryDialogFragment : DialogFragment() {
     private var _binding: FragmentCategoryDialogBinding? = null
     private val binding get() = _binding!!
 
     private var category: CategoryItem? = null
-    private var onResult: (() -> Unit)? = null
 
     companion object {
         private const val ARG_CATEGORY = "category"
@@ -80,10 +77,6 @@ class CategoryDialogFragment : DialogFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    fun setOnResultListener(listener: () -> Unit) {
-        onResult = listener
     }
 }
 

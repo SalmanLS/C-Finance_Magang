@@ -60,6 +60,5 @@ dependencies {
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.retrofit)
-
-
+    implementation(libs.androidx.paging.runtime.ktx)
 }

@@ -113,7 +113,7 @@ class CashflowAddUpdateActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.updateResult.collect { result ->
                 result?.onSuccess {
-                    showSuccessDialog("User updated successfully")
+                    showSuccessDialog("Data updated successfully")
                 }?.onFailure {
                     showErrorDialog(it.message)
                 }
@@ -122,7 +122,7 @@ class CashflowAddUpdateActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.addResult.collect { result ->
                 result?.onSuccess {
-                    showSuccessDialog("User added successfully")
+                    showSuccessDialog("Data added successfully")
                 }?.onFailure {
                     showErrorDialog(it.message)
                 }

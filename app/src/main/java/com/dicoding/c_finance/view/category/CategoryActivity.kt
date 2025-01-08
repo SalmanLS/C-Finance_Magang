@@ -74,7 +74,7 @@ class CategoryActivity : AppCompatActivity() {
             showLoading2(isLoading)
         }
         lifecycleScope.launch {
-            categoryViewModel.categoryResult.collect{ result ->
+            categoryViewModel.categoryResult.collect { result ->
                 result?.onSuccess {
                     showSuccessDialog("A change has been made!")
                 }?.onFailure {
