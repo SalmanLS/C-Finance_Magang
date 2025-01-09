@@ -13,7 +13,8 @@ import com.dicoding.c_finance.view.cashflow.CashflowFragment
 import com.dicoding.c_finance.view.home.HomeFragment
 import com.dicoding.c_finance.view.log.LogFragment
 import com.dicoding.c_finance.view.login.LoginActivity
-import com.dicoding.c_finance.view.users.UsersFragment
+import com.dicoding.c_finance.view.main.viewmodel.MainViewModel
+import com.dicoding.c_finance.view.managehub.ManageFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.nav_users -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.flFragment, UsersFragment())
+                        .replace(R.id.flFragment, ManageFragment())
                         .commit()
                     true
                 }

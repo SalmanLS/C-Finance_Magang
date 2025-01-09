@@ -18,13 +18,10 @@
             android:name=".view.recycle.RecycleBinActivity"
             android:exported="false" />
         <activity
-            android:name=".view.category.CategoryActivity"
-            android:exported="false" />
-        <activity
             android:name=".view.cashflow.CashflowAddUpdateActivity"
             android:exported="false" />
         <activity
-            android:name=".view.users.UsersAddUpdateActivity"
+            android:name=".view.managehub.ManageUsersAddUpdateActivity"
             android:exported="false" />
         <activity
             android:name=".view.login.LoginActivity"

@@ -7,13 +7,13 @@ import com.dicoding.c_finance.model.repo.FinanceRepository
 import com.dicoding.c_finance.utils.Injection
 import com.dicoding.c_finance.view.cashflow.viewmodel.CashflowAddUpdateViewModel
 import com.dicoding.c_finance.view.cashflow.viewmodel.CashflowViewModel
-import com.dicoding.c_finance.view.category.viewmodel.CategoryViewModel
+import com.dicoding.c_finance.view.managehub.viewmodel.CategoryViewModel
 import com.dicoding.c_finance.view.log.viewmodel.LogViewModel
 import com.dicoding.c_finance.view.login.LoginViewModel
-import com.dicoding.c_finance.view.main.MainViewModel
+import com.dicoding.c_finance.view.main.viewmodel.MainViewModel
 import com.dicoding.c_finance.view.recycle.viewmodel.RecyclebinViewModel
-import com.dicoding.c_finance.view.users.viewmodel.UsersAddUpdateViewModel
-import com.dicoding.c_finance.view.users.viewmodel.UsersViewModel
+import com.dicoding.c_finance.view.managehub.viewmodel.UsersAddUpdateViewModel
+import com.dicoding.c_finance.view.managehub.viewmodel.UsersViewModel
 
 class ViewModelFactory(private val financeRepository: FinanceRepository) :
     ViewModelProvider.NewInstanceFactory() {

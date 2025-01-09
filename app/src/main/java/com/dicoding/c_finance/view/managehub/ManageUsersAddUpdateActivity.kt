@@ -1,4 +1,4 @@
-package com.dicoding.c_finance.view.users
+package com.dicoding.c_finance.view.managehub
 
 import android.os.Bundle
 import android.view.View
@@ -13,10 +13,10 @@ import com.dicoding.c_finance.ViewModelFactory
 import com.dicoding.c_finance.databinding.ActivityUsersAddUpdateBinding
 import com.dicoding.c_finance.model.response.user.UsersItem
 import com.dicoding.c_finance.utils.UserInputFields
-import com.dicoding.c_finance.view.users.viewmodel.UsersAddUpdateViewModel
+import com.dicoding.c_finance.view.managehub.viewmodel.UsersAddUpdateViewModel
 import kotlinx.coroutines.launch
 
-class UsersAddUpdateActivity : AppCompatActivity() {
+class ManageUsersAddUpdateActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUsersAddUpdateBinding
     private val viewModel by viewModels<UsersAddUpdateViewModel> {
         ViewModelFactory.getInstance(this)
@@ -30,7 +30,7 @@ class UsersAddUpdateActivity : AppCompatActivity() {
         setContentView(binding.root)
         enableEdgeToEdge()
 
-        val userItem: UsersItem? = intent.getParcelableExtra(UsersFragment.USER_ID)
+        val userItem: UsersItem? = intent.getParcelableExtra(ManageFragment.USER_ID)
 
         isEdit = userItem != null
 

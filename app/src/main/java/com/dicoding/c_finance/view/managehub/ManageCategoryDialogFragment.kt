@@ -1,4 +1,4 @@
-package com.dicoding.c_finance.view.category
+package com.dicoding.c_finance.view.managehub
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -8,7 +8,7 @@ import com.dicoding.c_finance.R
 import com.dicoding.c_finance.databinding.FragmentCategoryDialogBinding
 import com.dicoding.c_finance.model.response.category.CategoryItem
 
-class CategoryDialogFragment : DialogFragment() {
+class ManageCategoryDialogFragment : DialogFragment() {
     private var _binding: FragmentCategoryDialogBinding? = null
     private val binding get() = _binding!!
 
@@ -17,8 +17,8 @@ class CategoryDialogFragment : DialogFragment() {
     companion object {
         private const val ARG_CATEGORY = "category"
 
-        fun newInstance(category: CategoryItem? = null): CategoryDialogFragment {
-            val fragment = CategoryDialogFragment()
+        fun newInstance(category: CategoryItem? = null): ManageCategoryDialogFragment {
+            val fragment = ManageCategoryDialogFragment()
             val args = Bundle().apply { putParcelable(ARG_CATEGORY, category) }
             fragment.arguments = args
             return fragment

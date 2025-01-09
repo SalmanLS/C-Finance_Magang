@@ -1,4 +1,4 @@
-package com.dicoding.c_finance.view.users
+package com.dicoding.c_finance.view.managehub
 
 import android.app.Dialog
 import android.os.Bundle
@@ -8,7 +8,7 @@ import com.dicoding.c_finance.R
 import com.dicoding.c_finance.databinding.FragmentUserDetailDialogBinding
 import com.dicoding.c_finance.model.response.user.UsersItem
 
-class UserDetailDialogFragment : DialogFragment() {
+class ManageUserDialogFragment : DialogFragment() {
     private var _binding: FragmentUserDetailDialogBinding? = null
     private val binding get() = _binding!!
     private var onEditListener: ((UsersItem) -> Unit)? = null
@@ -17,10 +17,10 @@ class UserDetailDialogFragment : DialogFragment() {
     companion object {
         private const val ARG_USER = "user"
 
-        fun newInstance(user: UsersItem): UserDetailDialogFragment {
+        fun newInstance(user: UsersItem): ManageUserDialogFragment {
             val args = Bundle()
             args.putParcelable(ARG_USER, user)
-            val fragment = UserDetailDialogFragment()
+            val fragment = ManageUserDialogFragment()
             fragment.arguments = args
             return fragment
         }

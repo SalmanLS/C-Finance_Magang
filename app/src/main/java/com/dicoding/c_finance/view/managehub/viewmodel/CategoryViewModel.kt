@@ -1,4 +1,4 @@
-package com.dicoding.c_finance.view.category.viewmodel
+package com.dicoding.c_finance.view.managehub.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -22,8 +22,7 @@ class CategoryViewModel(private val financeRepository: FinanceRepository) : View
     val categoryData: LiveData<List<CategoryItem>?> get() = _categoryData
     private val _isLoading = MutableLiveData(false)
     val isLoading: LiveData<Boolean> = _isLoading
-    private val _isLoading2 = MutableLiveData(false)
-    val isLoading2: LiveData<Boolean> = _isLoading2
+
 
     fun setSelectedType(type: Int) {
         _selectedType.value = type
@@ -46,13 +45,13 @@ class CategoryViewModel(private val financeRepository: FinanceRepository) : View
     fun addCategory(name: String, idType: Int) {
         viewModelScope.launch {
             try {
-                _isLoading2.value = true
+                _isLoading.value = true
                 val result = financeRepository.addCategory(idType, name)
                 _categoryResult.value = result
             } catch (e: Exception) {
                 _categoryResult.value = Result.failure(e)
             } finally {
-                _isLoading2.value = false
+                _isLoading.value = false
                 _categoryResult.value = null
             }
         }
@@ -61,13 +60,13 @@ class CategoryViewModel(private val financeRepository: FinanceRepository) : View
     fun updateCategory(id: Int, name: String, idType: Int) {
         viewModelScope.launch {
             try {
-                _isLoading2.value = true
+                _isLoading.value = true
                 val result = financeRepository.updateCategory(id, idType, name)
                 _categoryResult.value = result
             } catch (e: Exception) {
                 _categoryResult.value = Result.failure(e)
             } finally {
-                _isLoading2.value = false
+                _isLoading.value = false
                 _categoryResult.value = null
             }
         }
@@ -76,13 +75,13 @@ class CategoryViewModel(private val financeRepository: FinanceRepository) : View
     fun deleteCategory(id: Int) {
         viewModelScope.launch {
             try {
-                _isLoading2.value = true
+                _isLoading.value = true
                 val result = financeRepository.deleteCategory(id)
                 _categoryResult.value = result
             } catch (e: Exception) {
                 _categoryResult.value = Result.failure(e)
             } finally {
-                _isLoading2.value = false
+                _isLoading.value = false
                 _categoryResult.value = null
             }
         }

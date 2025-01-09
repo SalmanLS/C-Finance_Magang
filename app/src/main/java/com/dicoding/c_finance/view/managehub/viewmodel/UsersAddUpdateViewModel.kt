@@ -1,4 +1,4 @@
-package com.dicoding.c_finance.view.users.viewmodel
+package com.dicoding.c_finance.view.managehub.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
