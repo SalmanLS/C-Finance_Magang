@@ -8,6 +8,7 @@ import com.dicoding.c_finance.R
 import com.dicoding.c_finance.databinding.FragmentCashflowDetailDialogBinding
 import com.dicoding.c_finance.model.response.cashflow.TransaksiItem
 import com.dicoding.c_finance.model.response.user.UsersItem
+import com.dicoding.c_finance.utils.customCurrencyFormat
 import com.dicoding.c_finance.utils.customDateFormat
 
 class CashflowDetailDialogFragment : DialogFragment() {
@@ -32,8 +33,17 @@ class CashflowDetailDialogFragment : DialogFragment() {
         val cashflow = arguments?.getParcelable<TransaksiItem>(ARG_CASHFLOW)
 
         val date = cashflow?.tanggalTransaksi?.let { customDateFormat(it) }
+        binding.tvUsername.text = cashflow?.nama ?: "-"
         binding.tvDate.text = date ?: "-"
-        binding.tvAmount.text = cashflow?.nominal.toString()
+        binding.tvDate.setTextColor(resources.getColor(R.color.blue_text))
+        val nominal = cashflow?.nominal?.let { customCurrencyFormat(it.toDouble()) }
+        if (cashflow?.idTipe == 1) {
+            binding.tvAmount.setTextColor(resources.getColor(R.color.green_text))
+            binding.tvAmount.text = nominal
+        } else {
+            binding.tvAmount.setTextColor(resources.getColor(R.color.red))
+            binding.tvAmount.text = nominal
+        }
         binding.tvCategory.text = cashflow?.namaKategori ?: "-"
         binding.tvType.text = if (cashflow?.idTipe == 1) "Income" else "Expense"
         binding.tvDescription.text = cashflow?.deskripsi ?: "-"

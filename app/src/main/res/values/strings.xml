@@ -69,4 +69,5 @@
     <string name="delete_log">Delete Log</string>
     <string name="recycle_bin">Recycle Bin</string>
     <string name="greetings_manage">Management Hub</string>
+    <string name="description_text">Description:</string>
 </resources>

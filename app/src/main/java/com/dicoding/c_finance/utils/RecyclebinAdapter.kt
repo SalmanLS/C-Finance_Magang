@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.dicoding.c_finance.R
 import com.dicoding.c_finance.databinding.CashflowRecycleBinding
 import com.dicoding.c_finance.model.response.recyclebin.RecycleBinItem
 
@@ -31,6 +32,11 @@ class RecyclebinAdapter(): ListAdapter<RecycleBinItem, RecyclebinAdapter.MyViewH
             val dateDeleted = recycleBinItem.tanggalDihapus?.let { customDateFormat(it) }
             binding.tvDateDeleted.text = dateDeleted
             val nominal = recycleBinItem.nominal?.let { customCurrencyFormat(it.toDouble()) }
+            if (recycleBinItem.idTipe == "1") {
+                binding.tvTotal.setTextColor(binding.root.resources.getColor(R.color.green_text))
+            } else {
+                binding.tvTotal.setTextColor(binding.root.resources.getColor(R.color.red))
+            }
             binding.tvTotal.text = nominal
             binding.tvType.text = recycleBinItem.namaTipe
 

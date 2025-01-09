@@ -5,48 +5,86 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/tvDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Date"
-        android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tvAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Amount"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/tvDate"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
         android:id="@+id/tvCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Category"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/tvAmount"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/category"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="@string/username_text"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCategory" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="1dp"
+        android:layout_height="12dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="2dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/tvUsername"
+        app:layout_constraintStart_toEndOf="@id/tvUsername"
+        app:layout_constraintTop_toTopOf="@id/tvUsername" />
 
     <TextView
         android:id="@+id/tvType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Type"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/tvCategory"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:fontFamily="@font/poppins"
+        android:text="@string/type_text"
+        android:layout_marginStart="10dp"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/tvUsername"
+        app:layout_constraintTop_toTopOf="@id/tvUsername"
+        app:layout_constraintBottom_toBottomOf="@id/tvUsername"/>
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date_text"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAmount" />
+
+    <TextView
+        android:id="@+id/tvAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/balance_text"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvDescriptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="@string/description_text"
+        android:textSize="14sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvType" />
 
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Description"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/tvType"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="@string/description"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDescriptionText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

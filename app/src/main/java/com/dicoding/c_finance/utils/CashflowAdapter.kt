@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.dicoding.c_finance.R
 import com.dicoding.c_finance.databinding.CashflowItemBinding
 import com.dicoding.c_finance.model.response.cashflow.TransaksiItem
 
@@ -27,9 +28,14 @@ class CashflowAdapter(private val onItemClick: (TransaksiItem) -> Unit) : ListAd
             binding.tvDate.text = tanggal
             val nominal = transaksiItem.nominal?.toDouble()
             val newNominal = nominal?.let { customCurrencyFormat(it) }
+            if (transaksiItem.idTipe == 1) {
+                binding.tvTotal.setTextColor(binding.root.resources.getColor(R.color.green_text))
+            } else {
+                binding.tvTotal.setTextColor(binding.root.resources.getColor(R.color.red))
+            }
             binding.tvTotal.text = newNominal
             binding.tvCategory.text = transaksiItem.namaKategori
-            binding.tvType.text = transaksiItem.namaTipe
+            binding.tvType.text = if (transaksiItem.idTipe == 1) "Income" else "Expense"
             binding.root.setOnClickListener { onItemClick(transaksiItem) }
         }
     }
