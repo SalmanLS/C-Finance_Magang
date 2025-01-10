@@ -11,6 +11,8 @@ import kotlinx.coroutines.launch
 class CashflowViewModel(private val financeRepository: FinanceRepository): ViewModel() {
     private val _cashflowData = MutableLiveData<List<TransaksiItem>>()
     val cashflowData: LiveData<List<TransaksiItem>> get() = _cashflowData
+//    private val _fetchResult = MutableStateFlow<Result<GlobalResponse>?>(null)
+//    val fetchResult: StateFlow<Result<GlobalResponse>?> = _fetchResult.asStateFlow()
     private val _isLoading = MutableLiveData(false)
     val isLoading: LiveData<Boolean> = _isLoading
 

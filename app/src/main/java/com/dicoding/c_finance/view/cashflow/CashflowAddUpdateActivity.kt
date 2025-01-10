@@ -44,6 +44,9 @@ class CashflowAddUpdateActivity : AppCompatActivity() {
             intent.getParcelableExtra(CashflowFragment.TRANSACTION_ID)
         isEdit = cashflowItem != null
 
+        binding.tfCategory.boxBackgroundColor = getColor(R.color.transparant)
+        binding.autoCompleteTextView.setBackgroundColor(getColor(R.color.transparant))
+
         if (isEdit) {
             id_transaksi = cashflowItem?.idTransaksi
             binding.tiDescription.setText(cashflowItem?.deskripsi)

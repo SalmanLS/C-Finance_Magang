@@ -52,16 +52,16 @@
         android:id="@+id/btnExport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/blue_lite"
         android:layout_marginStart="4dp"
+        android:backgroundTint="@color/blue_lite"
         android:fontFamily="@font/poppins"
         android:text="@string/export"
         android:textStyle="bold"
         app:icon="@drawable/export"
         app:iconSize="28dp"
-        app:layout_constraintTop_toBottomOf="@id/ivHeader"
+        app:layout_constraintBottom_toBottomOf="@id/guideline3"
         app:layout_constraintStart_toEndOf="@id/btnAddCashflow"
-        app:layout_constraintBottom_toBottomOf="@id/guideline3"/>
+        app:layout_constraintTop_toBottomOf="@id/ivHeader" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -72,17 +72,113 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline3">
 
+        <TextView
+            android:id="@+id/tvTransactionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/greetings_transaction"
+            android:textColor="@color/blue"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTransactionText"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filterAll"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/filter_all"
+                android:textColor="@color/chip_text_color_selector"
+                app:checkedIconTint="@color/chip_text_color_selector"
+                app:chipBackgroundColor="@color/chip_color_selector" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filterIncome"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/filter_income"
+                android:textColor="@color/chip_text_color_selector"
+                app:checkedIconTint="@color/chip_text_color_selector"
+                app:chipBackgroundColor="@color/chip_color_selector" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filterExpense"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/filter_expense"
+                android:textColor="@color/chip_text_color_selector"
+                app:checkedIconTint="@color/chip_text_color_selector"
+                app:chipBackgroundColor="@color/chip_color_selector" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filterDate"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/filter_date"
+                android:textColor="@color/chip_text_color_selector"
+                app:checkedIconTint="@color/chip_text_color_selector"
+                app:chipBackgroundColor="@color/chip_color_selector" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCashflow"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chipGroupFilter"
             tools:listitem="@layout/cashflow_item" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline3">
+
+        <ImageView
+            android:id="@+id/ivEmpty"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/empty"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/blue" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_text"
+            android:textColor="@color/blue"
+            android:textSize="18sp"
+            android:fontFamily="@font/poppins_semibold"
+            app:layout_constraintTop_toBottomOf="@id/ivEmpty"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -91,17 +187,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="210dp"/>
+        app:layout_constraintGuide_begin="210dp" />
 
     <ProgressBar
         android:id="@+id/progressIndicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/guideline3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:indeterminate="true"
         app:indicatorColor="@color/black"
-        app:trackColor="@color/white"
-        android:indeterminate="true" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline3"
+        app:trackColor="@color/white" />
 </androidx.constraintlayout.widget.ConstraintLayout>

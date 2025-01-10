@@ -17,6 +17,7 @@ import com.dicoding.c_finance.databinding.FragmentHomeBinding
 import com.dicoding.c_finance.model.response.cashflow.TransaksiItem
 import com.dicoding.c_finance.utils.CashflowAdapter
 import com.dicoding.c_finance.utils.customCurrencyFormat
+import com.dicoding.c_finance.view.cashflow.CashflowFragment
 import com.dicoding.c_finance.view.home.viewmodel.HomeViewModel
 import ir.mahozad.android.PieChart
 import ir.mahozad.android.component.Alignment
@@ -41,7 +42,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         observeViewModel()
     }
 
@@ -66,6 +66,14 @@ class HomeFragment : Fragment() {
 
         viewModel.cashflowDataRecent.observe(viewLifecycleOwner) { cashflow ->
             cashflowAdapter.submitList(cashflow)
+        }
+        binding.tvShowAll.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.flFragment, CashflowFragment())
+                .addToBackStack(null)
+                .commit()
+            val bottomNav = requireActivity().findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bnView)
+            bottomNav.selectedItemId = R.id.nav_list
         }
     }
 
