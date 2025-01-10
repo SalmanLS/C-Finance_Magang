@@ -8,10 +8,10 @@
     <string name="greetings_home">Hi, Admin!</string>
     <string name="balance_text">Balance</string>
     <string name="balance">Rp 100,000,000</string>
-    <string name="income_text">Total Income</string>
-    <string name="outcome_text">Total Outcome</string>
+    <string name="income_text">Income</string>
+    <string name="outcome_text">Expense</string>
     <string name="balance_income">Rp 100,000,000</string>
-    <string name="balance_outcome">-Rp 100,000,000</string>
+    <string name="balance_outcome">Rp 100,000,000</string>
     <string name="add_category">Add Category</string>
     <string name="export">Export</string>
     <string name="activity_log">User Activity Log</string>
@@ -38,7 +38,6 @@
     <string name="update_user">Update User</string>
     <string name="create">Create</string>
     <string name="update">Update</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="role">Role</string>
     <string name="username_detail">Username: %1$s</string>
@@ -70,4 +69,8 @@
     <string name="recycle_bin">Recycle Bin</string>
     <string name="greetings_manage">Management Hub</string>
     <string name="description_text">Description:</string>
+    <string name="phone_text_detail">Phone Number: %1$s</string>
+    <string name="month_text">Bulan</string>
+    <string name="recent_transaction_text">Recent Transaction</string>
+    <string name="show_all"><u>Show all</u></string>
 </resources>

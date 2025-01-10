@@ -61,4 +61,6 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.retrofit)
     implementation(libs.androidx.paging.runtime.ktx)
+
+    implementation(libs.pie.chart)
 }

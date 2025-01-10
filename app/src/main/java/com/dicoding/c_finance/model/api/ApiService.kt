@@ -60,9 +60,6 @@ interface ApiService {
         @Query("id_tipe") id_tipe: Int
     ): GetCategoryResponse
 
-    @GET("category/read")
-    suspend fun getCategory(): GetCategoryResponse
-
     @FormUrlEncoded
     @POST("category/add")
     suspend fun addCategory(
@@ -113,6 +110,9 @@ interface ApiService {
     suspend fun deleteTransaction(
         @Query("id_transaksi") id_transaksi: Int
     ): GlobalResponse
+
+    @GET("transaction/recent")
+    suspend fun getRecentTransaction(): GetCashflowResponse
 
     //LOG
     @GET("actlog/read")

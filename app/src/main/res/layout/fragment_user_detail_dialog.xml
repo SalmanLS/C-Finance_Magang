@@ -8,23 +8,26 @@
         android:id="@+id/tvUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/username"
+        android:fontFamily="@font/poppins"
+        android:paddingBottom="8dp"
+        android:text="@string/username_detail"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:paddingBottom="8dp" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/phone_text"
-        android:textSize="16sp"
-        android:paddingBottom="8dp" />
+        android:fontFamily="@font/poppins"
+        android:paddingBottom="8dp"
+        android:text="@string/phone_text_detail"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tvRole"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/role"
+        android:fontFamily="@font/poppins"
+        android:text="@string/role_detail"
         android:textSize="16sp" />
 </LinearLayout>

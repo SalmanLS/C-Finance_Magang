@@ -11,25 +11,26 @@
         android:id="@+id/ivHeader"
         android:layout_width="46dp"
         android:layout_height="46dp"
-        android:src="@drawable/log"
         android:layout_marginStart="24dp"
+        android:src="@drawable/log"
+        app:layout_constraintBottom_toBottomOf="@id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/guideline3"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tvTitlePage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/poppins"
         android:text="@string/activity_log_text"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
         android:textColor="@color/white"
         android:textSize="34sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/ivHeader"
         app:layout_constraintStart_toEndOf="@id/ivHeader"
-        app:layout_constraintTop_toTopOf="@id/ivHeader"
-        app:layout_constraintBottom_toBottomOf="@id/ivHeader"/>
+        app:layout_constraintTop_toTopOf="@id/ivHeader" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRcBin"
@@ -38,23 +39,23 @@
         android:layout_marginStart="24dp"
         android:backgroundTint="@color/blue_lite"
         android:fontFamily="@font/poppins"
+        android:gravity="center"
         android:text="@string/recycle_bin"
         android:textStyle="bold"
         app:icon="@drawable/recyclebin"
         app:iconSize="24dp"
-        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivHeader"
-        app:layout_constraintBottom_toBottomOf="@id/guideline3"/>
+        app:layout_constraintTop_toBottomOf="@id/ivHeader" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline3"
+        android:background="@drawable/background_body"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@drawable/background_body">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline3">
 
         <TextView
             android:id="@+id/tvActivityLog"
@@ -62,11 +63,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="18dp"
-            android:textStyle="bold"
             android:fontFamily="@font/poppins"
             android:text="@string/activity_log"
             android:textColor="@color/black"
             android:textSize="22sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -74,11 +75,11 @@
             android:id="@+id/rvLog"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvActivityLog"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:listitem="@layout/log_item"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvActivityLog"
+            tools:listitem="@layout/log_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -86,13 +87,14 @@
         android:id="@+id/progressIndicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/guideline3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:indeterminate="true"
+        android:visibility="visible"
         app:indicatorColor="@color/black"
-        app:trackColor="@color/white"
-        android:indeterminate="true" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline3"
+        app:trackColor="@color/white" />
 
 
     <androidx.constraintlayout.widget.Guideline

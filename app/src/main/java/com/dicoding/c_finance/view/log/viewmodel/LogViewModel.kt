@@ -15,24 +15,23 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class LogViewModel(private val financeRepository: FinanceRepository) : ViewModel() {
-    private val _isLoading = MutableLiveData(false)
-    val isLoading: LiveData<Boolean> = _isLoading
     private val _logResult = MutableStateFlow<Result<GlobalResponse>?>(null)
     val logResult: StateFlow<Result<GlobalResponse>?> = _logResult.asStateFlow()
-
+    private val _isLoading = MutableLiveData(false)
+    val isLoading: LiveData<Boolean> = _isLoading
     val pagingLog: LiveData<PagingData<LogItem>> =
         financeRepository.getLogs().cachedIn(viewModelScope)
 
     fun deleteLog(id: Int) {
         viewModelScope.launch {
             try {
-                _isLoading.postValue(true)
-                val response = financeRepository.deleteLogs(id)
-                _logResult.value = response
+                _isLoading.value = true
+                val result = financeRepository.deleteLogs(id)
+                _logResult.value = result
             } catch (e: Exception) {
                 _logResult.value = Result.failure(e)
             } finally {
-                _isLoading.postValue(false)
+                _isLoading.value = false
                 _logResult.value = null
             }
         }

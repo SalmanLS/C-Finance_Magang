@@ -153,6 +153,19 @@ class FinanceRepository private constructor(
         }
     }
 
+    suspend fun getRecentCashflows(): Result<List<TransaksiItem>>{
+        return try {
+            val response = apiService.getRecentTransaction()
+            if (response.status == "error") {
+                Result.failure(Exception("Failed to get recent cashflow data"))
+            } else {
+                Result.success(response.transaksi)
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
     suspend fun deleteCashflow(id: Int): Result<GlobalResponse> {
         return try {
             val response = apiService.deleteTransaction(id)
@@ -169,19 +182,6 @@ class FinanceRepository private constructor(
     suspend fun getCategoryByType(id: Int): Result<List<CategoryItem>>{
         return try {
             val response = apiService.getCategorybyType(id)
-            if (response.status == "error") {
-                Result.failure(Exception("Failed to get category data"))
-            } else {
-                Result.success(response.category)
-            }
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
-    }
-
-    suspend fun getCategory(): Result<List<CategoryItem>>{
-        return try {
-            val response = apiService.getCategory()
             if (response.status == "error") {
                 Result.failure(Exception("Failed to get category data"))
             } else {

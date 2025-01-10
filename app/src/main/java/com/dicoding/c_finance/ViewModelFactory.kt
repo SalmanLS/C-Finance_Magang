@@ -7,6 +7,7 @@ import com.dicoding.c_finance.model.repo.FinanceRepository
 import com.dicoding.c_finance.utils.Injection
 import com.dicoding.c_finance.view.cashflow.viewmodel.CashflowAddUpdateViewModel
 import com.dicoding.c_finance.view.cashflow.viewmodel.CashflowViewModel
+import com.dicoding.c_finance.view.home.viewmodel.HomeViewModel
 import com.dicoding.c_finance.view.managehub.viewmodel.CategoryViewModel
 import com.dicoding.c_finance.view.log.viewmodel.LogViewModel
 import com.dicoding.c_finance.view.login.LoginViewModel
@@ -54,6 +55,10 @@ class ViewModelFactory(private val financeRepository: FinanceRepository) :
 
             modelClass.isAssignableFrom(RecyclebinViewModel::class.java) -> {
                 RecyclebinViewModel(financeRepository) as T
+            }
+
+            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
+                HomeViewModel(financeRepository) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

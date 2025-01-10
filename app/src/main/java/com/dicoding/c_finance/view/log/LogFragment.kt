@@ -54,7 +54,6 @@ class LogFragment : Fragment() {
         pagingLogAdapter = PagingLogAdapter { logId ->
             showDeleteConfirmationDialog(logId)
         }
-
         binding.rvLog.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = pagingLogAdapter.withLoadStateFooter(
@@ -64,10 +63,6 @@ class LogFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
-            showLoading(isLoading)
-        }
-
         lifecycleScope.launch {
             viewModel.logResult.collect { result ->
                 result?.onSuccess {
@@ -78,7 +73,19 @@ class LogFragment : Fragment() {
                 }
             }
         }
-
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            showLoading(it)
+        }
+        pagingLogAdapter.loadStateFlow.let { loadStateFlow ->
+            lifecycleScope.launch {
+                loadStateFlow.collect { loadState ->
+                    binding.progressIndicator.visibility = when (loadState.refresh) {
+                        is androidx.paging.LoadState.Loading -> View.VISIBLE
+                        else -> View.GONE
+                    }
+                }
+            }
+        }
         viewModel.pagingLog.observe(viewLifecycleOwner) {
             pagingLogAdapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
@@ -99,17 +106,22 @@ class LogFragment : Fragment() {
             .show()
     }
 
-    private fun showLoading(isLoading: Boolean) {
-        binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
-        binding.rvLog.alpha = if (isLoading) 0.5f else 1f
-    }
-
     private fun showSuccessDialog(message: String) {
         AlertDialog.Builder(requireContext())
             .setTitle("Success")
             .setMessage(message)
             .setPositiveButton("OK") { _, _ -> }
             .show()
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressIndicator.visibility = View.VISIBLE
+            binding.root.alpha = 0.5f
+        } else {
+            binding.progressIndicator.visibility = View.GONE
+            binding.root.alpha = 1f
+        }
     }
 
     private fun showErrorDialog(message: String?) {
