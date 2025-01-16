@@ -9,7 +9,7 @@ import com.dicoding.c_finance.R
 import com.dicoding.c_finance.databinding.CashflowRecycleBinding
 import com.dicoding.c_finance.model.response.recyclebin.RecycleBinItem
 
-class RecyclebinAdapter(): ListAdapter<RecycleBinItem, RecyclebinAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class RecyclebinAdapter: ListAdapter<RecycleBinItem, RecyclebinAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding =
@@ -39,7 +39,7 @@ class RecyclebinAdapter(): ListAdapter<RecycleBinItem, RecyclebinAdapter.MyViewH
             }
             binding.tvTotal.text = nominal
             binding.tvType.text = recycleBinItem.namaTipe
-
+            binding.tvDescription.text = recycleBinItem.deskripsi
         }
     }
 

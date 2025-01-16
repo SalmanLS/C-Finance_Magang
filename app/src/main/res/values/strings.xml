@@ -80,4 +80,7 @@
     <string name="filter_date">Date</string>
     <string name="filtered_from_to">Filtered from %1$s to %2$s</string>
     <string name="empty_text">Nothing to see here..</string>
+    <string name="filter_users">Users</string>
+    <string name="filter_category">Category</string>
+    <string name="search">Search</string>
 </resources>

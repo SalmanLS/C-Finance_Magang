@@ -4,64 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
+    android:background="@color/white"
     tools:context=".view.managehub.ManageFragment">
 
-    <ImageView
-        android:id="@+id/ivHeader"
-        android:layout_width="46dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="24dp"
-        android:src="@drawable/cashflow"
-        app:layout_constraintBottom_toBottomOf="@id/guideline3"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="34dp"
+        android:background="@drawable/background_tabs"
+        android:backgroundTint="@color/blue_background"
+        android:paddingBottom="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tvTitlePage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/poppins"
-        android:text="@string/greetings_cashflow"
-        android:textColor="@color/white"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/ivHeader"
-        app:layout_constraintStart_toEndOf="@id/ivHeader"
-        app:layout_constraintTop_toTopOf="@id/ivHeader" />
+        <ImageView
+            android:id="@+id/ivHeader"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/cashflow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnAddCashflow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:backgroundTint="@color/blue_lite"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:text="@string/add_cashflow"
-        android:textStyle="bold"
-        app:icon="@drawable/add_data"
-        app:iconSize="24dp"
-        app:layout_constraintBottom_toBottomOf="@id/guideline3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivHeader" />
+        <TextView
+            android:id="@+id/tvTitlePage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/greetings_transaction"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/ivHeader"
+            app:layout_constraintStart_toEndOf="@id/ivHeader"
+            app:layout_constraintTop_toTopOf="@id/ivHeader" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnExport"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:backgroundTint="@color/blue_lite"
-        android:fontFamily="@font/poppins"
-        android:text="@string/export"
-        android:textStyle="bold"
-        app:icon="@drawable/export"
-        app:iconSize="28dp"
-        app:layout_constraintBottom_toBottomOf="@id/guideline3"
-        app:layout_constraintStart_toEndOf="@id/btnAddCashflow"
-        app:layout_constraintTop_toBottomOf="@id/ivHeader" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddCashflow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@color/blue"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:text="@string/add_cashflow"
+            android:textStyle="bold"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/add_data"
+            app:iconSize="24dp"
+            app:layout_constraintBottom_toBottomOf="@id/main_container"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitlePage" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnExport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@color/blue"
+            android:fontFamily="@font/poppins"
+            android:text="@string/export"
+            android:textStyle="bold"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/export"
+            app:iconSize="28dp"
+            app:layout_constraintBottom_toBottomOf="@id/main_container"
+            app:layout_constraintStart_toEndOf="@id/btnAddCashflow"
+            app:layout_constraintTop_toBottomOf="@id/tvTitlePage" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -70,28 +89,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline3">
-
-        <TextView
-            android:id="@+id/tvTransactionText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="@string/greetings_transaction"
-            android:textColor="@color/blue"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/main_container">
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipGroupFilter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTransactionText"
+            app:layout_constraintTop_toTopOf="parent"
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
@@ -136,6 +142,39 @@
 
         </com.google.android.material.chip.ChipGroup>
 
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="-4dp"
+            android:background="@color/blue_background"
+            app:layout_constraintTop_toBottomOf="@id/chipGroupFilter" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiSearch"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="4dp"
+            app:endIconDrawable="@drawable/ic_search"
+            app:endIconMode="custom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/searchEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/search"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:textSize="12sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCashflow"
@@ -144,7 +183,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/chipGroupFilter"
+            app:layout_constraintTop_toBottomOf="@id/tiSearch"
             tools:listitem="@layout/cashflow_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -172,13 +211,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
             android:text="@string/empty_text"
             android:textColor="@color/blue"
             android:textSize="18sp"
-            android:fontFamily="@font/poppins_semibold"
-            app:layout_constraintTop_toBottomOf="@id/ivEmpty"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/ivEmpty" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

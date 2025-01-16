@@ -30,7 +30,7 @@ class ManageUsersAddUpdateActivity : AppCompatActivity() {
         setContentView(binding.root)
         enableEdgeToEdge()
 
-        val userItem: UsersItem? = intent.getParcelableExtra(ManageFragment.USER_ID)
+        val userItem: UsersItem? = intent.getParcelableExtra(UserFragment.USER_ID)
 
         isEdit = userItem != null
 

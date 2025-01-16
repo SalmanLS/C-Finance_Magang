@@ -12,7 +12,7 @@ import com.dicoding.c_finance.view.managehub.viewmodel.CategoryViewModel
 import com.dicoding.c_finance.view.log.viewmodel.LogViewModel
 import com.dicoding.c_finance.view.login.LoginViewModel
 import com.dicoding.c_finance.view.main.viewmodel.MainViewModel
-import com.dicoding.c_finance.view.recycle.viewmodel.RecyclebinViewModel
+import com.dicoding.c_finance.view.log.viewmodel.RecyclebinViewModel
 import com.dicoding.c_finance.view.managehub.viewmodel.UsersAddUpdateViewModel
 import com.dicoding.c_finance.view.managehub.viewmodel.UsersViewModel
 

@@ -7,6 +7,8 @@ import androidx.fragment.app.DialogFragment
 import com.dicoding.c_finance.R
 import com.dicoding.c_finance.databinding.FragmentCategoryDialogBinding
 import com.dicoding.c_finance.model.response.category.CategoryItem
+import com.dicoding.c_finance.view.managehub.CategoryFragment.Companion.TYPE_EXPENSE
+import com.dicoding.c_finance.view.managehub.CategoryFragment.Companion.TYPE_INCOME
 
 class ManageCategoryDialogFragment : DialogFragment() {
     private var _binding: FragmentCategoryDialogBinding? = null
@@ -50,17 +52,18 @@ class ManageCategoryDialogFragment : DialogFragment() {
 
     private fun handleSaveOrUpdate() {
         val name = binding.tiCategoryName.text.toString().trim()
-        val idType = if (binding.radioIncome.isChecked) 1 else 2
-
+        val idType = if (binding.radioIncome.isChecked) TYPE_INCOME else TYPE_EXPENSE
         if (name.isNotEmpty()) {
+            val action = if (category == null) "SAVE" else "UPDATE"
             val result = Bundle().apply {
-                putString("ACTION", if (category == null) "SAVE" else "UPDATE")
+                putString("ACTION", action)
                 putParcelable("CATEGORY", CategoryItem(category?.idKategori, idType, name))
             }
             parentFragmentManager.setFragmentResult("CATEGORY_RESULT", result)
             dismiss()
         }
     }
+
 
     private fun handleDelete() {
         category?.let {

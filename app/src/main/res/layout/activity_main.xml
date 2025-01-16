@@ -14,25 +14,33 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bnView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_marginBottom="-12dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="-8dp"
+        android:foreground="@drawable/bottom_shadow"
+        android:foregroundTint="@color/white"
         app:layout_constraintBottom_toTopOf="@id/bnView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:foreground="@drawable/bottom_shadow"
-        android:foregroundTint="@color/white"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnView"
+        style="@style/BottomNavigationViewCentered"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/background_bottom_bar"
+        android:paddingTop="4dp"
+        app:itemIconSize="28dp"
+        android:fitsSystemWindows="true"
         app:itemIconTint="@color/bottom_icon_color"
         app:itemRippleColor="@color/bottom_color"
         app:labelVisibilityMode="unlabeled"
@@ -40,5 +48,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_menu" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="84dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

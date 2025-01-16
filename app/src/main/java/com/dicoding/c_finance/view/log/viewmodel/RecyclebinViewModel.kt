@@ -1,4 +1,4 @@
-package com.dicoding.c_finance.view.recycle.viewmodel
+package com.dicoding.c_finance.view.log.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

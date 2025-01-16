@@ -27,7 +27,7 @@
         android:layout_height="150dp"
         android:layout_margin="12dp"
         android:background="@drawable/background_add_cashflow"
-        android:backgroundTint="@color/blue"
+        android:backgroundTint="@color/blue_background"
         android:paddingBottom="14dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvAdmin">
@@ -75,12 +75,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/blue_background"
+            android:backgroundTint="@color/blue"
             app:cardCornerRadius="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="@color/blue_background">
+            app:strokeColor="@color/blue">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -208,11 +208,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
-        android:backgroundTint="@color/blue"
+        android:backgroundTint="@color/blue_background"
         app:cardCornerRadius="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_container"
-        app:strokeColor="@color/blue">
+        app:strokeColor="@color/blue_background">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -385,7 +385,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvRecentTransaction"
         app:trackColor="@color/white" />
 
     <androidx.constraintlayout.widget.Guideline

@@ -1,34 +1,19 @@
 package com.dicoding.c_finance.view.log
 
-import android.app.AlertDialog
-import android.content.Intent
+
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.dicoding.c_finance.ViewModelFactory
 import com.dicoding.c_finance.databinding.FragmentLogBinding
-import com.dicoding.c_finance.utils.LoadingStateAdapter
-import com.dicoding.c_finance.utils.PagingLogAdapter
-import com.dicoding.c_finance.view.log.viewmodel.LogViewModel
-import com.dicoding.c_finance.view.recycle.RecycleBinActivity
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
+import com.dicoding.c_finance.utils.LogViewPagerAdapter
+import com.google.android.material.tabs.TabLayoutMediator
 
 
 class LogFragment : Fragment() {
     private lateinit var binding: FragmentLogBinding
-    private val viewModel by viewModels<LogViewModel> {
-        ViewModelFactory.getInstance(requireContext())
-    }
-    private lateinit var pagingLogAdapter: PagingLogAdapter
+    private lateinit var adapter: LogViewPagerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,94 +26,19 @@ class LogFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupRecyclerView()
-        observeViewModel()
-
-        binding.btnRcBin.setOnClickListener {
-            val intent = Intent(requireContext(), RecycleBinActivity::class.java)
-            startActivity(intent)
-        }
+        setupView()
     }
 
-    private fun setupRecyclerView() {
-        pagingLogAdapter = PagingLogAdapter { logId ->
-            showDeleteConfirmationDialog(logId)
-        }
-        binding.rvLog.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = pagingLogAdapter.withLoadStateFooter(
-                footer = LoadingStateAdapter { pagingLogAdapter.retry() }
-            )
-        }
-    }
+    private fun setupView() {
+        adapter = LogViewPagerAdapter(this)
+        binding.viewPager.adapter = adapter
 
-    private fun observeViewModel() {
-        lifecycleScope.launch {
-            viewModel.logResult.collect { result ->
-                result?.onSuccess {
-                    showSuccessDialog("Log Deleted")
-                    refreshLogs()
-                }?.onFailure { error ->
-                    showErrorDialog(error.message)
-                }
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            tab.text = when (position) {
+                0 -> "User Log"
+                1 -> "Recycle Bin"
+                else -> "Tab $position"
             }
-        }
-        viewModel.isLoading.observe(viewLifecycleOwner) {
-            showLoading(it)
-        }
-        pagingLogAdapter.loadStateFlow.let { loadStateFlow ->
-            lifecycleScope.launch {
-                loadStateFlow.collect { loadState ->
-                    binding.progressIndicator.visibility = when (loadState.refresh) {
-                        is androidx.paging.LoadState.Loading -> View.VISIBLE
-                        else -> View.GONE
-                    }
-                }
-            }
-        }
-        viewModel.pagingLog.observe(viewLifecycleOwner) {
-            pagingLogAdapter.submitData(viewLifecycleOwner.lifecycle, it)
-        }
-    }
-
-    private fun refreshLogs() {
-        pagingLogAdapter.refresh()
-    }
-
-    private fun showDeleteConfirmationDialog(logId: Int) {
-        AlertDialog.Builder(requireContext())
-            .setTitle("Confirm Delete")
-            .setMessage("Are you sure you want to delete this log?")
-            .setPositiveButton("Yes") { _, _ ->
-                viewModel.deleteLog(logId)
-            }
-            .setNegativeButton("No", null)
-            .show()
-    }
-
-    private fun showSuccessDialog(message: String) {
-        AlertDialog.Builder(requireContext())
-            .setTitle("Success")
-            .setMessage(message)
-            .setPositiveButton("OK") { _, _ -> }
-            .show()
-    }
-
-    private fun showLoading(isLoading: Boolean) {
-        if (isLoading) {
-            binding.progressIndicator.visibility = View.VISIBLE
-            binding.root.alpha = 0.5f
-        } else {
-            binding.progressIndicator.visibility = View.GONE
-            binding.root.alpha = 1f
-        }
-    }
-
-    private fun showErrorDialog(message: String?) {
-        AlertDialog.Builder(requireContext())
-            .setTitle("Error")
-            .setMessage(message ?: "An error occurred")
-            .setPositiveButton("Retry") { _, _ -> }
-            .show()
+        }.attach()
     }
 }
