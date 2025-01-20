@@ -19,6 +19,7 @@ import com.dicoding.c_finance.model.response.recyclebin.RecycleBinItem
 import com.dicoding.c_finance.model.response.user.UsersItem
 import com.dicoding.c_finance.utils.LogPagingSource
 import kotlinx.coroutines.flow.firstOrNull
+import okhttp3.ResponseBody
 
 class FinanceRepository private constructor(
     var apiService: ApiService,
@@ -279,6 +280,19 @@ class FinanceRepository private constructor(
         }catch (e: Exception){
             Result.failure(e)
         }
+    }
+
+    suspend fun exportData(start_date: String, end_date: String): Result<ResponseBody>{
+        return try {
+            val response = apiService.exportData(start_date = start_date, end_date = end_date)
+            Result.success(response)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun logout(){
+        userPreference.clearToken()
     }
 
     companion object {

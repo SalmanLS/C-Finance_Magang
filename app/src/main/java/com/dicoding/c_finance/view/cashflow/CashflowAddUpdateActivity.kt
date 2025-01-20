@@ -181,22 +181,27 @@ class CashflowAddUpdateActivity : AppCompatActivity() {
                 binding.tiDescription.error = "Description cannot be empty"
                 false
             }
+
             nominal.isEmpty() || nominal.toDoubleOrNull() == null -> {
                 binding.tiNominal.error = "Nominal must be a valid number"
                 false
             }
+
             date.isEmpty() -> {
                 binding.edtDate.error = "Date cannot be empty"
                 false
             }
+
             selectedCategoryId == null -> {
                 showErrorDialog("Please select a category")
                 false
             }
+
             id_type == null -> {
                 showErrorDialog("Please select a transaction type")
                 false
             }
+
             else -> true
         }
     }

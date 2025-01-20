@@ -48,7 +48,7 @@
             android:id="@+id/btnAddCashflow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginTop="12dp"
             android:backgroundTint="@color/blue"
             android:fontFamily="@font/poppins"
@@ -58,15 +58,15 @@
             app:cornerRadius="12dp"
             app:icon="@drawable/add_data"
             app:iconSize="24dp"
+            app:layout_constraintEnd_toStartOf="@id/btnExport"
             app:layout_constraintBottom_toBottomOf="@id/main_container"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTitlePage" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnExport"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginEnd="12dp"
             android:layout_marginTop="12dp"
             android:backgroundTint="@color/blue"
             android:fontFamily="@font/poppins"
@@ -75,8 +75,8 @@
             app:cornerRadius="12dp"
             app:icon="@drawable/export"
             app:iconSize="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/main_container"
-            app:layout_constraintStart_toEndOf="@id/btnAddCashflow"
             app:layout_constraintTop_toBottomOf="@id/tvTitlePage" />
 
 
@@ -157,9 +157,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="12dp"
-            android:layout_marginTop="4dp"
-            app:endIconDrawable="@drawable/ic_search"
-            app:endIconMode="custom"
+            app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider">

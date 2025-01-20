@@ -40,6 +40,7 @@
             android:layout_marginTop="96dp"
             android:layout_marginEnd="48dp"
             android:hint="@string/username"
+
             app:boxBackgroundColor="@color/grey"
             app:boxCornerRadiusBottomEnd="30dp"
             app:boxCornerRadiusBottomStart="30dp"

@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
+import com.dicoding.c_finance.R
 import com.dicoding.c_finance.databinding.FragmentLogBinding
 import com.dicoding.c_finance.utils.LogViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
@@ -38,6 +40,11 @@ class LogFragment : Fragment() {
                 0 -> "User Log"
                 1 -> "Recycle Bin"
                 else -> "Tab $position"
+            }
+            tab.icon = when (position) {
+                0 -> ResourcesCompat.getDrawable(resources, R.drawable.users, null)
+                1 -> ResourcesCompat.getDrawable(resources, R.drawable.recyclebin, null)
+                else -> ResourcesCompat.getDrawable(resources, R.drawable.baseline_error_24, null)
             }
         }.attach()
     }

@@ -56,6 +56,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ivHeader"
+            app:tabIconTint="@color/white"
             app:tabIndicatorColor="@color/white"
             app:tabSelectedTextColor="@color/white"
             app:tabTextAppearance="@style/TextAppearance.Material3.TitleMedium"

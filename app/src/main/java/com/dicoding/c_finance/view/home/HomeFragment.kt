@@ -1,5 +1,8 @@
 package com.dicoding.c_finance.view.home
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -19,6 +22,7 @@ import com.dicoding.c_finance.utils.CashflowAdapter
 import com.dicoding.c_finance.utils.customCurrencyFormat
 import com.dicoding.c_finance.view.cashflow.CashflowFragment
 import com.dicoding.c_finance.view.home.viewmodel.HomeViewModel
+import com.dicoding.c_finance.view.login.LoginActivity
 import ir.mahozad.android.PieChart
 import ir.mahozad.android.component.Alignment
 import java.sql.Date
@@ -43,6 +47,10 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
+
+        binding.btnLogout.setOnClickListener {
+            showLogoutDialog()
+        }
     }
 
     private fun observeViewModel() {
@@ -58,9 +66,9 @@ class HomeFragment : Fragment() {
         viewModel.isLoading.observe(viewLifecycleOwner) {
             showLoading(it)
         }
-        cashflowAdapter = CashflowAdapter {
+        cashflowAdapter = CashflowAdapter({
             return@CashflowAdapter
-        }
+        }, enableFiltering = false)
         binding.rvRecentTransaction.adapter = cashflowAdapter
         binding.rvRecentTransaction.layoutManager = LinearLayoutManager(context)
 
@@ -72,7 +80,10 @@ class HomeFragment : Fragment() {
                 .replace(R.id.flFragment, CashflowFragment())
                 .addToBackStack(null)
                 .commit()
-            val bottomNav = requireActivity().findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bnView)
+            val bottomNav =
+                requireActivity().findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(
+                    R.id.bnView
+                )
             bottomNav.selectedItemId = R.id.nav_list
         }
     }
@@ -163,6 +174,25 @@ class HomeFragment : Fragment() {
         updatePieChart(cashflow)
 
     }
+
+    private fun showLogoutDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Logout")
+            .setMessage("Are you sure you want to log out?")
+            .setPositiveButton("Yes") { _, _ ->
+                performLogout()
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private fun performLogout() {
+        viewModel.logout()
+        val intent = Intent(requireContext(), LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+    }
+
 
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {

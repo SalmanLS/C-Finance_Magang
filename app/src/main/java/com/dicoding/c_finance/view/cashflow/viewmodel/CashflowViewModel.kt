@@ -6,11 +6,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dicoding.c_finance.model.repo.FinanceRepository
 import com.dicoding.c_finance.model.response.cashflow.TransaksiItem
+import com.dicoding.c_finance.utils.ExportState
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class CashflowViewModel(private val financeRepository: FinanceRepository): ViewModel() {
     private val _cashflowData = MutableLiveData<List<TransaksiItem>>()
     val cashflowData: LiveData<List<TransaksiItem>> get() = _cashflowData
+    private val _exportState = MutableStateFlow<ExportState>(ExportState.Idle)
+    val exportState: StateFlow<ExportState> get() = _exportState
 //    private val _fetchResult = MutableStateFlow<Result<GlobalResponse>?>(null)
 //    val fetchResult: StateFlow<Result<GlobalResponse>?> = _fetchResult.asStateFlow()
     private val _isLoading = MutableLiveData(false)
@@ -43,4 +48,19 @@ class CashflowViewModel(private val financeRepository: FinanceRepository): ViewM
             }
         }
     }
+    fun exportData(startDate: String, endDate: String) {
+        viewModelScope.launch {
+            _exportState.value = ExportState.Loading
+            val result = financeRepository.exportData(startDate, endDate)
+            result.fold(
+                onSuccess = { responseBody ->
+                    _exportState.value = ExportState.Success(responseBody)
+                },
+                onFailure = { error ->
+                    _exportState.value = ExportState.Failure(error.message ?: "Unknown error")
+                }
+            )
+        }
+    }
+
 }

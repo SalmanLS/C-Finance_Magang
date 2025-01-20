@@ -43,4 +43,10 @@ class HomeViewModel(private val financeRepository: FinanceRepository): ViewModel
             }
         }
     }
+
+    fun logout() {
+        viewModelScope.launch {
+            financeRepository.logout()
+        }
+    }
 }

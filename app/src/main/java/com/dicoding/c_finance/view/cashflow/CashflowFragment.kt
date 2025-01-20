@@ -1,8 +1,17 @@
 package com.dicoding.c_finance.view.cashflow
 
+import android.Manifest
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.app.DownloadManager
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,14 +20,22 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity.RESULT_OK
+import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.c_finance.R
 import com.dicoding.c_finance.ViewModelFactory
 import com.dicoding.c_finance.databinding.FragmentCashflowBinding
 import com.dicoding.c_finance.model.response.cashflow.TransaksiItem
 import com.dicoding.c_finance.utils.CashflowAdapter
+import com.dicoding.c_finance.utils.ExportState
+import com.dicoding.c_finance.utils.saveFileToDownloads
 import com.dicoding.c_finance.view.cashflow.viewmodel.CashflowViewModel
+import okhttp3.ResponseBody
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -28,6 +45,7 @@ class CashflowFragment : Fragment() {
     private lateinit var cashflowAdapter: CashflowAdapter
     private var beginDate: String? = null
     private var endDate: String? = null
+    private var fileName: String? = null
     private val dateFormatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     private val cashflowViewModel by viewModels<CashflowViewModel> {
         ViewModelFactory.getInstance(requireContext())
@@ -39,6 +57,18 @@ class CashflowFragment : Fragment() {
             cashflowViewModel.fetchCashflow()
         }
     }
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+            if (isGranted) {
+                beginDate?.let { start ->
+                    endDate?.let { end ->
+                        exportCashflow(start, end)
+                    }
+                }
+            } else {
+                showToast("Permission denied. Cannot save the file.")
+            }
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,9 +85,9 @@ class CashflowFragment : Fragment() {
     }
 
     private fun setupView() {
-        cashflowAdapter = CashflowAdapter { selectedCashflow ->
-            showCashflowDetails(selectedCashflow)
-        }
+        cashflowAdapter = CashflowAdapter(onItemClick = {
+            showCashflowDetails(it)
+        }, enableFiltering = true)
 
         binding.rvCashflow.adapter = cashflowAdapter
         binding.rvCashflow.layoutManager = LinearLayoutManager(context)
@@ -76,6 +106,73 @@ class CashflowFragment : Fragment() {
 
         cashflowViewModel.isLoading.observe(viewLifecycleOwner) {
             showLoading(it)
+        }
+        setupSearch()
+
+        binding.btnExport.setOnClickListener {
+            exportDialog()
+        }
+    }
+
+    private fun exportDialog() {
+        val dialogFragment = ExportDialogFragment()
+        dialogFragment.setExportDialogListener(object : ExportDialogFragment.ExportDialogListener {
+            override fun onExportClicked(startDate: String, endDate: String) {
+                checkPermissionAndExport(startDate, endDate)
+            }
+        })
+        dialogFragment.show(parentFragmentManager, "ExportDialog")
+    }
+
+    private fun checkPermissionAndExport(startDate: String, endDate: String) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ) == PackageManager.PERMISSION_GRANTED
+            ) {
+                exportCashflow(startDate, endDate)
+            } else {
+                requestPermissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            }
+        } else {
+            exportCashflow(startDate, endDate)
+        }
+    }
+
+    private fun exportCashflow(startDate: String, endDate: String) {
+        cashflowViewModel.exportData(startDate, endDate)
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            cashflowViewModel.exportState.collect { state ->
+                when (state) {
+                    is ExportState.Idle -> { /* Do nothing */ }
+                    is ExportState.Loading -> showLoading(true)
+                    is ExportState.Success -> {
+                        showLoading(false)
+                        saveExportedFile(state.data)
+                        Toast.makeText(requireContext(), "Export successful!", Toast.LENGTH_LONG).show()
+                        sendDownloadCompleteNotification(fileName!!)
+                    }
+                    is ExportState.Failure -> {
+                        showLoading(false)
+                        Toast.makeText(requireContext(), "Export failed: ${state.errorMessage}", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun saveExportedFile(responseBody: ResponseBody) {
+        fileName = "transaction_report_${System.currentTimeMillis()}.pdf"
+        val file = saveFileToDownloads(
+            responseBody,
+            fileName = fileName!!
+        )
+        if (file != null) {
+            Toast.makeText(requireContext(), "File saved to ${file.absolutePath}", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(requireContext(), "Failed to save file. Please try again.", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -139,6 +236,13 @@ class CashflowFragment : Fragment() {
         beginDatePicker.show()
     }
 
+    private fun setupSearch() {
+        binding.searchEditText.addTextChangedListener {
+            val query = it.toString()
+            cashflowAdapter.filter.filter(query)
+        }
+    }
+
     private fun resetToDefaultFilter() {
         binding.filterAll.isChecked = true
         val cashflow = cashflowViewModel.cashflowData.value ?: emptyList()
@@ -165,10 +269,12 @@ class CashflowFragment : Fragment() {
             R.id.filterAll -> {
                 cashflowAdapter.submitList(cashflow)
             }
+
             R.id.filterIncome -> {
                 val incomeCashflow = cashflow.filter { it.namaTipe == "Pemasukan" }
                 cashflowAdapter.submitList(incomeCashflow)
             }
+
             R.id.filterExpense -> {
                 val expenseCashflow = cashflow.filter { it.namaTipe == "Pengeluaran" }
                 cashflowAdapter.submitList(expenseCashflow)
@@ -204,12 +310,53 @@ class CashflowFragment : Fragment() {
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
             binding.progressIndicator.visibility = View.VISIBLE
+            binding.root.alpha = 0.5f
         } else {
             binding.progressIndicator.visibility = View.GONE
+            binding.root.alpha = 1.0f
         }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun sendDownloadCompleteNotification(fileName: String) {
+        val downloadIntent = Intent(DownloadManager.ACTION_VIEW_DOWNLOADS)
+
+        val pendingIntent = PendingIntent.getActivity(
+            requireContext(),
+            0,
+            downloadIntent,
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) PendingIntent.FLAG_IMMUTABLE else 0
+        )
+
+        val notificationManager = context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val builder = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
+            .setContentTitle("Download Complete")
+            .setSmallIcon(R.drawable.baseline_file_download_done_24)
+            .setContentText("File \"$fileName\" has been downloaded successfully.")
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                CHANNEL_ID,
+                CHANNEL_NAME,
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+            notificationManager.createNotificationChannel(channel)
+        }
+
+        val notification = builder.build()
+        notificationManager.notify(NOTIFICATION_ID, notification)
     }
 
     companion object {
         const val TRANSACTION_ID = "id_transaksi"
+        private const val NOTIFICATION_ID = 1
+        private const val CHANNEL_ID = "channel_01"
+        private const val CHANNEL_NAME = "transaction_channel"
     }
 }

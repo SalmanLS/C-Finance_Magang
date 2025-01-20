@@ -60,6 +60,7 @@
 
                 <RadioButton
                     android:id="@+id/radioIncome"
+                    style="@style/Widget.App.RadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"
@@ -68,6 +69,7 @@
 
                 <RadioButton
                     android:id="@+id/radioExpense"
+                    style="@style/Widget.App.RadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"

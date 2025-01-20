@@ -7,6 +7,7 @@ import com.dicoding.c_finance.model.response.log.GetLogResponse
 import com.dicoding.c_finance.model.response.user.GetUserResponse
 import com.dicoding.c_finance.model.response.login.LoginResponse
 import com.dicoding.c_finance.model.response.recyclebin.GetRecyclebinResponse
+import okhttp3.ResponseBody
 import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -80,7 +81,6 @@ interface ApiService {
         @Query("id_kategori") id_kategori: Int
     ): GlobalResponse
 
-
     //TRANSACTION
     @FormUrlEncoded
     @POST("transaction/add")
@@ -135,4 +135,10 @@ interface ApiService {
     suspend fun deleteRecycleBin(
         @Query("id_recycle_bin") id_recycle_bin: Int
     ): GlobalResponse
+
+    @GET("export")
+    suspend fun exportData(
+        @Query("start_date") start_date: String,
+        @Query("end_date") end_date: String
+    ): ResponseBody
 }

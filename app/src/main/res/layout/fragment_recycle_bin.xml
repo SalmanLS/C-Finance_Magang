@@ -7,40 +7,14 @@
     android:background="@color/white"
     tools:context=".view.log.RecycleBinFragment">
 
-    <ImageView
-        android:id="@+id/ivHeader"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:src="@drawable/recyclebin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/blue" />
-
-    <TextView
-        android:id="@+id/tvTitleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="@string/recycle_bin"
-        android:textColor="@color/blue"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="@id/ivHeader"
-        app:layout_constraintStart_toEndOf="@id/ivHeader"
-        app:layout_constraintTop_toTopOf="@id/ivHeader" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRcBin"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitleText"
+        app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/cashflow_recycle" />
 
     <ProgressBar
