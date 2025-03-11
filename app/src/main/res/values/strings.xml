@@ -85,4 +85,5 @@
     <string name="search">Search</string>
     <string name="start_date">Start Date</string>
     <string name="end_date">End Date</string>
+    <string name="this_month_summary">This Month Summary</string>
 </resources>

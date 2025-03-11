@@ -200,15 +200,15 @@ class HomeFragment : Fragment() {
             binding.mainContainer.children.forEach {
                 it.visibility = View.GONE
             }
-            binding.cvInfo.visibility = View.GONE
-            binding.cvPieChart.visibility = View.GONE
+            binding.clInfo.visibility = View.GONE
+            binding.pieChart.visibility = View.GONE
         } else {
             binding.progressIndicator.visibility = View.GONE
             binding.mainContainer.children.forEach {
                 it.visibility = View.VISIBLE
             }
-            binding.cvInfo.visibility = View.VISIBLE
-            binding.cvPieChart.visibility = View.VISIBLE
+            binding.clInfo.visibility = View.VISIBLE
+            binding.pieChart.visibility = View.VISIBLE
         }
     }
 
