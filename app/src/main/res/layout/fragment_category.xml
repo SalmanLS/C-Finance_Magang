@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/ivHeader"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/manage_category"
@@ -23,7 +23,7 @@
         android:id="@+id/tvCategoryText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="@string/greetings_category"
@@ -33,38 +33,39 @@
         app:layout_constraintStart_toEndOf="@id/ivHeader"
         app:layout_constraintTop_toTopOf="@id/ivHeader" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnAddCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="4dp"
-        android:backgroundTint="@color/blue_background"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:text="@string/add_category"
-        android:textStyle="bold"
-        app:cornerRadius="12dp"
-        app:icon="@drawable/add_data"
-        app:iconSize="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        android:id="@+id/btnAddCategory"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="14dp"-->
+<!--        android:layout_marginEnd="4dp"-->
+<!--        android:backgroundTint="@color/blue_background"-->
+<!--        android:fontFamily="@font/poppins"-->
+<!--        android:gravity="center"-->
+<!--        android:text="@string/add_category"-->
+<!--        android:textStyle="bold"-->
+<!--        app:cornerRadius="12dp"-->
+<!--        app:icon="@drawable/add_data"-->
+<!--        app:iconSize="24dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
+        android:paddingHorizontal="2dp"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvCategoryText">
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvCategoryText"
+        app:layout_constraintBottom_toBottomOf="@id/tvCategoryText">
 
         <RadioButton
             android:id="@+id/radioIncome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="4dp"
             android:fontFamily="@font/poppins"
             style="@style/Widget.App.RadioButton"
             android:text="@string/income" />
@@ -83,6 +84,7 @@
         android:id="@+id/rvCategory"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,5 +102,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:trackColor="@color/white" />
+
+    <ImageButton
+        android:id="@+id/btnAddCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:background="@drawable/background_container_rounded"
+        android:backgroundTint="@color/white"
+        android:elevation="4dp"
+        android:paddingVertical="14dp"
+        android:paddingStart="14dp"
+        android:paddingEnd="10dp"
+        android:src="@drawable/add_category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:tint="@color/blue_background" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

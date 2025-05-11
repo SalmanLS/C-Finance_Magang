@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/ivHeader"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/users"
@@ -22,7 +22,7 @@
         android:id="@+id/tvUsersText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="8dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="@string/greetings_users"
         android:textColor="@color/blue"
@@ -31,35 +31,36 @@
         app:layout_constraintStart_toEndOf="@id/ivHeader"
         app:layout_constraintTop_toTopOf="@id/ivHeader" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnAddUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="4dp"
-        android:backgroundTint="@color/blue_background"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:text="@string/add_user"
-        android:textStyle="bold"
-        app:cornerRadius="12dp"
-        app:icon="@drawable/add_user"
-        app:iconSize="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--    <com.google.android.material.button.MaterialButton-->
+    <!--        android:id="@+id/btnAddUser"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="14dp"-->
+    <!--        android:layout_marginEnd="4dp"-->
+    <!--        android:backgroundTint="@color/blue_background"-->
+    <!--        android:fontFamily="@font/poppins"-->
+    <!--        android:gravity="center"-->
+    <!--        android:text="@string/add_user"-->
+    <!--        android:textStyle="bold"-->
+    <!--        app:cornerRadius="12dp"-->
+    <!--        app:icon="@drawable/add_user"-->
+    <!--        app:iconSize="24dp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"/>-->
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tiSearch"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="12dp"
         android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
         app:endIconMode="clear_text"
+        app:layout_constraintBottom_toBottomOf="@id/tvUsersText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivHeader">
+        app:layout_constraintTop_toTopOf="@id/tvUsersText">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/searchEditText"
@@ -83,6 +84,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tiSearch"
         tools:listitem="@layout/user_item" />
+
+    <ImageButton
+        android:id="@+id/btnAddUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:background="@drawable/background_container_rounded"
+        android:backgroundTint="@color/white"
+        android:padding="14dp"
+        android:elevation="4dp"
+        android:src="@drawable/add_user"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/blue_background" />
 
     <ProgressBar
         android:id="@+id/progressIndicator"

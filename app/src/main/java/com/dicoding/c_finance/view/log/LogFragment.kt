@@ -41,11 +41,6 @@ class LogFragment : Fragment() {
                 1 -> "Recycle Bin"
                 else -> "Tab $position"
             }
-            tab.icon = when (position) {
-                0 -> ResourcesCompat.getDrawable(resources, R.drawable.users, null)
-                1 -> ResourcesCompat.getDrawable(resources, R.drawable.recyclebin, null)
-                else -> ResourcesCompat.getDrawable(resources, R.drawable.baseline_error_24, null)
-            }
         }.attach()
     }
 }

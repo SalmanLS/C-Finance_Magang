@@ -7,95 +7,107 @@
     android:background="@color/white"
     tools:context=".view.managehub.ManageFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="12dp"
-        android:layout_marginTop="34dp"
-        android:background="@drawable/background_tabs"
-        android:backgroundTint="@color/blue_background"
-        android:paddingBottom="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/ivHeader"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:src="@drawable/cashflow"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/tvTitlePage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="32dp"
             android:fontFamily="@font/poppins"
             android:text="@string/greetings_transaction"
-            android:textColor="@color/white"
+            android:textColor="@color/blue_background"
             android:textSize="26sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/ivHeader"
-            app:layout_constraintStart_toEndOf="@id/ivHeader"
-            app:layout_constraintTop_toTopOf="@id/ivHeader" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnAddCashflow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="12dp"
-            android:backgroundTint="@color/blue"
-            android:fontFamily="@font/poppins"
-            android:gravity="center"
-            android:text="@string/add_cashflow"
-            android:textStyle="bold"
-            app:cornerRadius="12dp"
-            app:icon="@drawable/add_data"
-            app:iconSize="24dp"
-            app:layout_constraintEnd_toStartOf="@id/btnExport"
-            app:layout_constraintBottom_toBottomOf="@id/main_container"
-            app:layout_constraintTop_toBottomOf="@id/tvTitlePage" />
+    <ImageView
+        android:id="@+id/ivHeader"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/cashflow"
+        app:layout_constraintStart_toEndOf="@id/tvTitlePage"
+        app:layout_constraintTop_toTopOf="@id/tvTitlePage" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnExport"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:layout_marginTop="12dp"
-            android:backgroundTint="@color/blue"
-            android:fontFamily="@font/poppins"
-            android:text="@string/export"
-            android:textStyle="bold"
-            app:cornerRadius="12dp"
-            app:icon="@drawable/export"
-            app:iconSize="28dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/main_container"
-            app:layout_constraintTop_toBottomOf="@id/tvTitlePage" />
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/btnAddCashflow"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="8dp"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:backgroundTint="@color/blue"-->
+<!--            android:fontFamily="@font/poppins"-->
+<!--            android:gravity="center"-->
+<!--            android:text="@string/add_cashflow"-->
+<!--            android:textStyle="bold"-->
+<!--            app:cornerRadius="12dp"-->
+<!--            app:icon="@drawable/add_data"-->
+<!--            app:iconSize="24dp"-->
+<!--            app:layout_constraintEnd_toStartOf="@id/btnExport"-->
+<!--            app:layout_constraintBottom_toBottomOf="@id/main_container"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tvTitlePage" />-->
+
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/btnExport"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="12dp"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:backgroundTint="@color/blue"-->
+<!--            android:fontFamily="@font/poppins"-->
+<!--            android:text="@string/export"-->
+<!--            android:textStyle="bold"-->
+<!--            app:cornerRadius="12dp"-->
+<!--            app:icon="@drawable/export"-->
+<!--            app:iconSize="28dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="@id/main_container"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tvTitlePage" />-->
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageButton
+        android:id="@+id/btnAddCashflow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_container_rounded"
+        android:padding="8dp"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/add_data"
+        app:layout_constraintTop_toTopOf="@id/tvTitlePage"
+        app:layout_constraintEnd_toStartOf="@id/btnExport"
+        app:layout_constraintBottom_toBottomOf="@id/tvTitlePage"
+        app:tint="@color/white" />
+
+    <ImageButton
+        android:id="@+id/btnExport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_container_rounded"
+        android:padding="8dp"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/export"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvTitlePage"
+        app:layout_constraintBottom_toBottomOf="@id/tvTitlePage"
+        app:tint="@color/white" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/background_body"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_container">
+        app:layout_constraintTop_toBottomOf="@id/tvTitlePage">
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipGroupFilter"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginHorizontal="2dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:singleSelection="true">
@@ -146,7 +158,6 @@
             android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:layout_marginHorizontal="12dp"
             android:layout_marginTop="-4dp"
             android:background="@color/blue_background"
             app:layout_constraintTop_toBottomOf="@id/chipGroupFilter" />
@@ -156,7 +167,7 @@
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
+            android:layout_marginHorizontal="2dp"
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -224,7 +235,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="210dp" />
+        app:layout_constraintGuide_end="547dp" />
 
     <ProgressBar
         android:id="@+id/progressIndicator"
