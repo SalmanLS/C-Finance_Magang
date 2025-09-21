@@ -1,47 +1,58 @@
-# 💰 C-Finance
-### *Smart Financial Management for Android*
-
 > **Final Internship Project at Creative Gama Studio**
 
 [![Android](https://img.shields.io/badge/Platform-Android-green.svg?style=flat-square&logo=android)](https://android.com)
-[![Java](https://img.shields.io/badge/Language-Java-orange.svg?style=flat-square&logo=java)](https://java.com)
+[![Kotlin](https://img.shields.io/badge/Language-Kotlin-purple.svg?style=flat-square&logo=kotlin)](https://kotlinlang.org)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-1.0.0-brightgreen.svg?style=flat-square)](releases)
 
 ---
-
 ## 🚀 Overview
 
-**C-Finance** is a comprehensive Android financial management application developed as the capstone project for my internship at **Creative Gama Studio**. This app empowers users to take control of their personal finances with intuitive design and powerful features.
+**C-Finance** is a comprehensive Android admin panel for financial management developed as the capstone project for my internship at **Creative Gama Studio**. This application provides administrators with powerful tools to oversee and manage user financial data across the platform.
 
-### ✨ Key Features
+### ✨ Admin Features
 
-🏦 **Expense Tracking** - Monitor your daily expenses with smart categorization  
-📊 **Financial Analytics** - Visualize your spending patterns with interactive charts  
-💡 **Budget Planning** - Set and track budgets to achieve your financial goals  
-🔔 **Smart Notifications** - Get reminded about bills and budget limits  
-📱 **Modern UI/UX** - Clean, intuitive interface following Material Design principles  
-🔒 **Secure Storage** - Your financial data is protected with advanced encryption  
+🔐 **Secure Admin Login** - JWT-based authentication with token management  
+📊 **Comprehensive Dashboard** - Real-time financial data overview in HomeFragment  
+📅 **Advanced Data Filtering** - Filter cashflow by date ranges and transaction types  
+💰 **Financial Analytics** - Automatic calculation of income, expenses, and balance  
+📄 **Export Functionality** - Generate PDF and Excel reports via ExportDialogFragment  
+🏷️ **Category Management** - Full CRUD operations for income/expense categories  
+👥 **User Management** - Complete user account administration with add/update features  
+📋 **Activity Logging** - Comprehensive user activity tracking with pagination  
+🗑️ **Recycle Bin** - View and restore deleted financial data for audit purposes  
 
 ---
 
 ## 📱 Screenshots
 
-| Dashboard | Expenses | Analytics |
-|-----------|----------|-----------|
-| ![Dashboard](screenshots/dashboard.png) | ![Expenses](screenshots/expenses.png) | ![Analytics](screenshots/analytics.png) |
+| Login | Dashboard | Category Management |
+|-------|-----------|-------------------|
+| ![Login](screenshots/login.png) | ![Dashboard](screenshots/dashboard.png) | ![Categories](screenshots/categories.png) |
 
 ---
 
 ## 🛠️ Technology Stack
 
+### 📱 **Frontend (Android)**
 - **Platform**: Android (SDK 21+)
-- **Language**: Java
+- **Language**: Kotlin
 - **Architecture**: MVVM (Model-View-ViewModel)
-- **Database**: SQLite with Room Persistence Library
 - **UI Framework**: Material Design Components
-- **Charts**: MPAndroidChart
-- **Testing**: JUnit, Espresso
+- **HTTP Client**: Retrofit2 + OkHttp3
+- **JSON Parsing**: Gson
+- **Export Libraries**: iText (PDF), Apache POI (Excel)
+- **Authentication**: JWT Token-based authentication
+- **Local Storage**: SharedPreferences for session management
+- **Date Picker**: Material Date Picker
+- **Loading States**: Progress bars and skeleton loading
+- **Error Handling**: Custom exception handling with user-friendly messages
+- **Testing**: JUnit, Espresso, MockK
+
+### 🌐 **Backend**
+- **Environment**: cPanel Hosting with PHP Native APIs
+- **Database**: MySQL
+- **Authentication**: JWT tokens
 
 ---
 
@@ -49,57 +60,163 @@
 
 This application was developed during my internship program at **Creative Gama Studio** as a demonstration of:
 
-✅ **Android Development Skills**  
-✅ **Software Architecture Best Practices**  
-✅ **Financial Domain Knowledge**  
-✅ **User Experience Design**  
-✅ **Project Management & Documentation**  
+✅ **Full-Stack Android Development** (Kotlin + PHP)  
+✅ **MVVM Architecture with Repository Pattern**  
+✅ **Fragment-based Navigation & Bottom Navigation**  
+✅ **Pagination with Paging 3 Library**  
+✅ **RESTful API Integration with Retrofit**  
+✅ **Role-Based Admin Panel Development**  
+✅ **Data Export & Reporting Systems**  
 
 ---
 
-## 📋 Installation
+Based on supervisor requirements, the application includes:
 
-### Prerequisites
-- Android Studio 4.0+
-- Android SDK 21+
-- Java 8+
+### 🔐 **1. Admin Authentication**
+- Secure login system for administrative access
+- Role-based authentication and authorization
 
-### Setup Instructions
+### 🏠 **2. Dashboard (Home Page)**
+- **Comprehensive Data View**: Display all user financial data (income/expenses)
+- **Date Range Filtering**: Filter transactions from date to date
+- **Transaction Type Filter**: Separate views for income or expense data
+- **Financial Summary**: Real-time calculation and display of:
+  - Total Income
+  - Total Expenses  
+  - Current Balance
+- **Data Export**: Generate reports in PDF and Excel formats
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/c-finance.git
-   cd c-finance
-   ```
+### 🏷️ **3. Category Management**
+- **Add Categories**: Create new categories for user transactions
+- **Category Types**: Support for both income and expense categories
+- **Edit Categories**: Modify existing category details
+- **Delete Categories**: Remove unused categories from the system
 
-2. **Open in Android Studio**
-   - Launch Android Studio
-   - Select "Open an existing Android Studio project"
-   - Navigate to the cloned directory
+### 👥 **4. User Account Management**
+- View and manage user account information
+- User profile oversight and administration
 
-3. **Build and Run**
-   ```bash
-   ./gradlew assembleDebug
-   ```
+### 🗑️ **5. Deleted Data Recovery**
+- **Audit Trail**: View income/expense data deleted by users
+- **Data Recovery**: Restore accidentally deleted transactions
+- **Administrative Oversight**: Monitor user deletion activities# 💰 C-Finance
+### *Smart Financial Management for Android*
+
+> **Backend**: The application connects to PHP APIs hosted on cPanel. Backend setup details are managed separately.
 
 ---
 
-## 🏗️ Project Structure
+## 🏗️ Android Architecture & Implementation
 
+### 📱 **Project Structure**
 ```
 app/
-├── src/main/java/com/cfinance/
-│   ├── ui/                 # UI Components & Activities
-│   ├── data/               # Data Layer (Repository, DAO)
-│   ├── model/              # Data Models
-│   ├── utils/              # Utility Classes
-│   └── viewmodel/          # ViewModel Classes
+├── src/main/java/com/dicoding/c_finance/
+│   ├── ViewModelFactory.kt           # ViewModel factory for dependency injection
+│   │
+│   ├── model/
+│   │   ├── api/
+│   │   │   ├── ApiConfig.kt          # Retrofit configuration
+│   │   │   └── ApiService.kt         # API endpoints interface
+│   │   ├── pref/
+│   │   │   ├── UserPreference.kt     # SharedPreferences manager
+│   │   │   └── UserToken.kt          # Token data class
+│   │   ├── repo/
+│   │   │   └── FinanceRepository.kt  # Data repository layer
+│   │   └── response/                 # API response models
+│   │       ├── GlobalResponse.kt
+│   │       ├── cashflow/GetCashflowResponse.kt
+│   │       ├── category/GetCategoryResponse.kt
+│   │       ├── log/GetLogResponse.kt
+│   │       ├── login/LoginResponse.kt
+│   │       ├── recyclebin/GetRecyclebinResponse.kt
+│   │       └── user/GetUserResponse.kt
+│   │
+│   ├── utils/
+│   │   ├── CashflowAdapter.kt        # Cashflow RecyclerView adapter
+│   │   ├── CategoryAdapter.kt        # Category RecyclerView adapter
+│   │   ├── UserAdapter.kt           # User management adapter
+│   │   ├── RecyclebinAdapter.kt     # Deleted data adapter
+│   │   ├── PagingLogAdapter.kt      # Pagination for logs
+│   │   ├── LogPagingSource.kt       # Paging source for logs
+│   │   ├── LoadingStateAdapter.kt   # Loading state handling
+│   │   ├── LogViewPager.kt         # ViewPager for log tabs
+│   │   ├── ManageViewPager.kt      # ViewPager for management
+│   │   ├── Helper.kt               # Utility functions
+│   │   └── Injection.kt            # Dependency injection
+│   │
+│   └── view/                        # UI Layer (Activities & Fragments)
+│       ├── splash/
+│       │   └── SplashActivity.kt
+│       ├── login/
+│       │   ├── LoginActivity.kt
+│       │   └── LoginViewModel.kt
+│       ├── main/
+│       │   ├── MainActivity.kt      # Main container with bottom nav
+│       │   └── viewmodel/MainViewModel.kt
+│       ├── home/
+│       │   ├── HomeFragment.kt      # Dashboard fragment
+│       │   └── viewmodel/HomeViewModel.kt
+│       ├── cashflow/
+│       │   ├── CashflowFragment.kt  # Financial data display
+│       │   ├── CashflowAddUpdateActivity.kt
+│       │   ├── CashflowDetailDialogFragment.kt
+│       │   ├── ExportDialogFragment.kt
+│       │   └── viewmodel/
+│       │       ├── CashflowViewModel.kt
+│       │       └── CashflowAddUpdateViewModel.kt
+│       ├── managehub/
+│       │   ├── ManageFragment.kt    # Management hub container
+│       │   ├── CategoryFragment.kt  # Category management
+│       │   ├── UserFragment.kt      # User management
+│       │   ├── ManageCategoryDialogFragment.kt
+│       │   ├── ManageUserDialogFragment.kt
+│       │   ├── ManageUsersAddUpdateActivity.kt
+│       │   └── viewmodel/
+│       │       ├── CategoryViewModel.kt
+│       │       ├── UsersViewModel.kt
+│       │       └── UsersAddUpdateViewModel.kt
+│       └── log/
+│           ├── LogFragment.kt       # Activity logs
+│           ├── UserLogFragment.kt   # User-specific logs
+│           ├── RecycleBinFragment.kt # Deleted data recovery
+│           └── viewmodel/
+│               ├── LogViewModel.kt
+│               └── RecyclebinViewModel.kt
+│
 ├── src/main/res/
-│   ├── layout/             # XML Layouts
-│   ├── values/             # Colors, Strings, Styles
-│   └── drawable/           # Icons & Graphics
-└── src/test/               # Unit Tests
+│   ├── layout/                      # XML layouts for all screens
+│   ├── drawable/                    # Icons and vector graphics
+│   ├── values/                      # Colors, strings, styles
+│   ├── font/                        # Poppins font family
+│   └── menu/                        # Bottom navigation menu
+│
+└── src/test/java/                   # Unit tests
 ```
+
+#### **3. Advanced Features Implementation**
+- **Bottom Navigation**: 5 main sections (Home, Cashflow, ManageHub, Log, Profile)
+- **Fragment-based Navigation**: Smooth transitions between screens
+- **Dialog Fragments**: For add/edit operations and exports
+- **ViewPager Integration**: Tabbed interfaces for logs and management
+- **Pagination**: Efficient loading of large datasets with Paging 3
+- **Export Functionality**: PDF/Excel generation through dialog interface
+- **Real-time Updates**: LiveData observers for reactive UI
+
+#### **4. Data Management**
+- **Token Management**: Secure JWT storage with UserPreference
+- **Response Handling**: Standardized GlobalResponse wrapper
+- **Error Handling**: Comprehensive error states across all ViewModels
+- **Loading States**: Custom LoadingStateAdapter for better UX
+- **Offline Support**: Repository pattern with local caching strategy
+
+#### **5. UI/UX Features**
+- **Material Design**: Custom themes and color schemes
+- **Custom Fonts**: Poppins font family integration
+- **Responsive Design**: Optimized layouts for different screen sizes
+- **Night Mode**: Dark theme support in themes.xml
+- **Custom Drawables**: Vector graphics for consistent iconography
+- **Smooth Animations**: Fragment transitions and RecyclerView animations
 
 ---
 
@@ -116,35 +233,16 @@ app/
 
 This project was completed as part of my internship program at **Creative Gama Studio**, a leading software development company specializing in mobile applications and digital solutions.
 
-**Internship Period**: [Your internship dates]  
-**Supervisor**: [Supervisor name]  
-**Duration**: [Project duration]
-
----
-
-## 🤝 Contributing
-
-While this is an internship project, feedback and suggestions are always welcome! Feel free to:
-
-- 🐛 Report bugs
-- 💡 Suggest new features  
-- 📝 Improve documentation
-- ⭐ Star this repository if you find it helpful
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+**Internship Period**: Nov 2024 - Jam 2025 
+**Duration**: 2-3 Weeks
 
 ---
 
 ## 📞 Contact
 
-**Developer**: [Your Name]  
-**Email**: [your.email@example.com]  
-**LinkedIn**: [Your LinkedIn Profile]  
-**Portfolio**: [Your Portfolio Website]
+**Developer**: Salman Luthfi Sugiarto  
+**Email**: salmanluthfi456@gmail.com 
+**LinkedIn**:   www.linkedin.com/in/salman-luthfi-sugiarto-17b742301
 
 ---
 
