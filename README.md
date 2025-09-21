@@ -26,9 +26,9 @@
 
 ## 📱 Screenshots
 
-| Login | Dashboard | Category Management |
+| Splash Screen | Login | Dashboard |
 |-------|-----------|-------------------|
-| ![Login](screenshots/login.png) | ![Dashboard](screenshots/dashboard.png) | ![Categories](screenshots/categories.png) |
+| ![Splash Screen](screenshot_cfinance/Screenshot_20250524_154249.png) | ![Login](screenshot_cfinance/Screenshot_20250525_131628.png) | ![Dashboard](screenshot_cfinance/Screenshot_20250525_131645.png) | 
 
 ---
 
