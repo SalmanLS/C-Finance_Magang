@@ -41,7 +41,7 @@
 - **UI Framework**: Material Design Components
 - **HTTP Client**: Retrofit2 + OkHttp3
 - **JSON Parsing**: Gson
-- **Export Libraries**: iText (PDF), Apache POI (Excel)
+- **Export Libraries**: iText (PDF)
 - **Authentication**: JWT Token-based authentication
 - **Local Storage**: SharedPreferences for session management
 - **Date Picker**: Material Date Picker
