@@ -208,15 +208,12 @@ app/
 - **Response Handling**: Standardized GlobalResponse wrapper
 - **Error Handling**: Comprehensive error states across all ViewModels
 - **Loading States**: Custom LoadingStateAdapter for better UX
-- **Offline Support**: Repository pattern with local caching strategy
 
 #### **5. UI/UX Features**
 - **Material Design**: Custom themes and color schemes
 - **Custom Fonts**: Poppins font family integration
 - **Responsive Design**: Optimized layouts for different screen sizes
-- **Night Mode**: Dark theme support in themes.xml
 - **Custom Drawables**: Vector graphics for consistent iconography
-- **Smooth Animations**: Fragment transitions and RecyclerView animations
 
 ---
 
