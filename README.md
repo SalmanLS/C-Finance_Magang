@@ -195,7 +195,7 @@ app/
 ```
 
 #### **3. Advanced Features Implementation**
-- **Bottom Navigation**: 5 main sections (Home, Cashflow, ManageHub, Log, Profile)
+- **Bottom Navigation**: 4 main sections (Home, Cashflow, ManageHub, Log)
 - **Fragment-based Navigation**: Smooth transitions between screens
 - **Dialog Fragments**: For add/edit operations and exports
 - **ViewPager Integration**: Tabbed interfaces for logs and management
