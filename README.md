@@ -230,8 +230,7 @@ app/
 
 This project was completed as part of my internship program at **Creative Gama Studio**, a leading software development company specializing in mobile applications and digital solutions.
 
-**Internship Period**: Nov 2024 - Jan 2025 
-**Duration**: 2-3 Weeks
+**Internship Period**: Nov 2024 - Jan 2025
 
 ---
 
